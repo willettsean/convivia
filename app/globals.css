@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --terracotta: #C1623F;
+  --charcoal: #2C2C2C;
+  --cream: #FAF8F5;
+}
+
+body {
+  background-color: #FAF8F5;
+  color: #2C2C2C;
+}

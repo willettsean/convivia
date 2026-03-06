@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String         @id @default(cuid())
+  name         String
+  email        String         @unique
+  passwordHash String
+  phone        String?
+  company      String?
+  role         String         @default("member")
+  createdAt    DateTime       @default(now())
+  profile      MemberProfile?
+  membership   Membership?
+  reservations Reservation[]
+  emailLogs    EmailLog[]
+}
+
+model MemberProfile {
+  id                   String   @id @default(cuid())
+  userId               String   @unique
+  user                 User     @relation(fields: [userId], references: [id])
+  gdprConsentTimestamp DateTime
+  marketingOptIn       Boolean  @default(false)
+}
+
+model Membership {
+  id                   String    @id @default(cuid())
+  userId               String    @unique
+  user                 User      @relation(fields: [userId], references: [id])
+  tier                 String
+  status               String    @default("active")
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  currentPeriodEnd     DateTime?
+  createdAt            DateTime  @default(now())
+}
+
+model Room {
+  id           String        @id @default(cuid())
+  name         String
+  description  String?
+  active       Boolean       @default(true)
+  reservations Reservation[]
+}
+
+model Reservation {
+  id            String   @id @default(cuid())
+  roomId        String
+  room          Room     @relation(fields: [roomId], references: [id])
+  userId        String
+  user          User     @relation(fields: [userId], references: [id])
+  startDatetime DateTime
+  endDatetime   DateTime
+  status        String   @default("confirmed")
+  createdAt     DateTime @default(now())
+}
+
+model Event {
+  id            String   @id @default(cuid())
+  title         String
+  description   String
+  startDatetime DateTime
+  endDatetime   DateTime
+  location      String   @default("Convivia, Walnut Creek, CA")
+  imageUrl      String?
+  status        String   @default("draft")
+  createdAt     DateTime @default(now())
+}
+
+model EmailCampaign {
+  id             String    @id @default(cuid())
+  createdById    String
+  subject        String
+  body           String
+  audienceFilter String    @default("active")
+  status         String    @default("draft")
+  sentAt         DateTime?
+  createdAt      DateTime  @default(now())
+}
+
+model EmailLog {
+  id        String   @id @default(cuid())
+  type      String
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  email     String
+  subject   String
+  status    String   @default("sent")
+  createdAt DateTime @default(now())
+}
