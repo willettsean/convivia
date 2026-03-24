@@ -1,50 +1,28 @@
-'use client'
 import Link from 'next/link'
-import { useSession, signOut } from 'next-auth/react'
 import Image from 'next/image'
 
-export default function Nav() {
-  const { data: session } = useSession()
-  const role = (session?.user as any)?.role
+const links = [
+  { href: '/#workspace', label: 'Workspace' },
+  { href: '/#amenities', label: 'Amenities' },
+  { href: '/#community', label: 'Community' },
+  { href: '/membership', label: 'Memberships' },
+]
 
+export default function Nav() {
   return (
-    <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between">
-      <div className="flex items-center gap-8">
-        <Link href="/">
-          <Image src="/logo.jpg" alt="Convivia" height={40} width={140} className="h-10 w-auto object-contain" />
+    <header className="sticky top-0 z-50 border-b border-black/5 bg-white/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <Link href="/" className="flex items-center gap-3">
+          <Image src="/assets/LOGOS/PNG/logo-color.png" alt="Convivia Work" width={160} height={48} priority />
         </Link>
-        <div className="hidden md:flex items-center gap-6">
-          <Link href="/" className="text-sm font-medium text-gray-700 hover:text-[#C1623F] transition-colors">Home</Link>
-          <Link href="/pricing" className="text-sm font-medium text-gray-700 hover:text-[#C1623F] transition-colors">Pricing</Link>
-          <Link href="/events" className="text-sm font-medium text-gray-700 hover:text-[#C1623F] transition-colors">Events</Link>
-        </div>
-      </div>
-      <div className="flex items-center gap-4">
-        {session ? (
-          <>
-            <Link href="/portal" className="text-sm font-medium text-gray-700 hover:text-[#C1623F] transition-colors">Portal</Link>
-            {role === 'admin' && (
-              <Link href="/admin" className="text-sm font-medium text-gray-700 hover:text-[#C1623F] transition-colors">Admin</Link>
-            )}
-            <button
-              onClick={() => signOut({ callbackUrl: '/' })}
-              className="text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors"
-            >
-              Logout
-            </button>
-          </>
-        ) : (
-          <>
-            <Link href="/login" className="text-sm font-medium text-gray-700 hover:text-[#C1623F] transition-colors">Login</Link>
-            <Link
-              href="/pricing"
-              className="bg-[#C1623F] text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-[#a8522f] transition-colors"
-            >
-              Get Early Access
+        <nav className="hidden items-center gap-6 text-xs uppercase tracking-[0.2em] text-black/60 lg:flex">
+          {links.map((link) => (
+            <Link key={link.href} href={link.href} className="hover:text-black transition-colors">
+              {link.label}
             </Link>
-          </>
-        )}
+          ))}
+        </nav>
       </div>
-    </nav>
+    </header>
   )
 }

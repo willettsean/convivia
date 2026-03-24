@@ -1,0 +1,354 @@
+
+Convivia Work Website
+Product Requirements Document (PRD)
+Version: 1.1 Company: Convivia Work Tagline: Create Connect CoWork
+
+1. Product Overview
+Develop a tech-forward marketing website for Convivia Work that:
+	•	Showcases the coworking space
+	•	Converts visitors into members
+	•	Integrates with the CoWorks SaaS backend
+The website will function primarily as a frontend marketing and conversion layer while CoWorks handles operational backend functionality such as:
+	•	membership management
+	•	booking
+	•	payments
+	•	CRM
+	•	space management
+The website should appeal to:
+	•	startup founders
+	•	freelancers
+	•	small businesses
+	•	highly productive professionals
+
+2. Vision
+Create a modern, technology-forward coworking website that communicates:
+	•	productivity
+	•	innovation
+	•	collaboration
+Convivia Work should be positioned as:
+• a technology-first coworking environment • a community for builders and creators • a workspace for highly productive professionals
+The brand journey is:
+Create → Connect → CoWork
+This should guide the messaging and layout of the website.
+
+3. Goals
+Primary Goals
+	•	Convert visitors into coworking members
+	•	Encourage tour bookings
+	•	Showcase the technology and workspace features
+	•	Integrate seamlessly with CoWorks SaaS
+Secondary Goals
+	•	Build credibility with startups and professionals
+	•	Highlight community and collaboration
+	•	Provide clear information about workspace offerings
+
+4. Target Audience
+Primary Audience
+Startups and small businesses who want:
+	•	high-performance workspace
+	•	reliable technology infrastructure
+	•	collaboration with ambitious professionals
+Typical Users
+Startup Founder
+Needs:
+	•	meeting rooms
+	•	fast internet
+	•	professional environment
+	•	startup community
+Freelancer / Creative
+Needs:
+	•	focus space
+	•	creative environment
+	•	flexible workspace
+Small Teams
+Needs:
+	•	collaboration space
+	•	conference rooms
+	•	flexible membership
+Power Users
+Highly productive professionals who want:
+	•	strong technology infrastructure
+	•	other driven professionals around them
+	•	an environment designed for productivity
+
+5. Brand Identity
+Company Name
+Convivia Work
+Tagline
+Create Connect CoWork
+Brand Personality
+• Tech-forward • Productive • Ambitious • Collaborative • Modern
+Design Direction
+The site should feel more technology-forward than:
+https://industriousoffice.com
+However it should be similar in:
+	•	layout structure
+	•	content depth
+	•	marketing flow
+Design Inspiration
+Modern SaaS-style UI such as:
+	•	Stripe
+	•	Vercel
+	•	Linear
+	•	Superhuman
+Visual Style
+Preferred characteristics:
+	•	modern typography
+	•	large imagery
+	•	spacious layouts
+	•	subtle animations
+	•	high contrast
+	•	minimalist UI
+
+6. Core Value Proposition
+Convivia Work provides a workspace designed for builders and creators who want:
+	•	reliable technology
+	•	collaborative community
+	•	productivity-focused environment
+Key Differentiators
+• video conference-enabled meeting rooms • podcast studio • creative glare-free workspace • natural light collaboration areas • tech-forward infrastructure • high-performance professional community
+
+7. Website Structure
+Pages
+Home
+Hero section with tagline:
+Create Connect CoWork
+Sections:
+	•	overview of workspace
+	•	technology-first environment
+	•	community & collaboration
+	•	amenities overview
+	•	CTA: Book a Tour
+	•	CTA: View Membership Plans
+
+About
+Sections:
+	•	Convivia Work vision
+	•	philosophy of productivity
+	•	who the space is for
+	•	community culture
+
+Workspace & Amenities
+Detailed description of the space and environments.
+
+Membership Plans
+Display membership tiers.
+Pricing and availability should connect to CoWorks backend.
+CTA:
+Join Now
+
+Conference Rooms
+Showcase meeting rooms.
+Include:
+	•	video conferencing
+	•	presentation capabilities
+	•	booking via CoWorks
+
+Community
+Explain community philosophy:
+	•	builders
+	•	founders
+	•	creators
+	•	collaboration
+
+Book a Tour
+Primary conversion page.
+Visitors can schedule tours.
+
+Contact
+Includes:
+	•	address
+	•	phone
+	•	email
+	•	map
+
+8. Workspace & Amenities
+The workspace environment should highlight flexibility for different work styles and moods, emphasizing both energy and focus.
+The messaging should communicate that Convivia Work supports both high-energy collaboration and deep focused productivity.
+Members can move between environments depending on their workflow and mood.
+
+Natural Light Collaboration Areas
+Open workspace areas feature large windows and abundant natural light, creating an energizing environment for:
+	•	collaboration
+	•	brainstorming
+	•	casual meetings
+	•	creative thinking
+These spaces encourage connection and interaction between builders, founders, and creators.
+
+Focused Glare-Free Work Zones
+Dedicated work areas are designed specifically for deep focus and screen-heavy work.
+Features include:
+	•	glare-free lighting conditions
+	•	optimized desk layouts
+	•	minimal distractions
+	•	comfortable long-session work environments
+Ideal for:
+	•	developers
+	•	graphic designers
+	•	videographers and editors
+	•	artists 
+Technology-Enabled Conference Rooms
+Conference rooms include:
+	•	full video conferencing
+	•	large displays
+	•	high-speed connectivity
+	•	presentation-ready setups
+Ideal for:
+	•	client meetings
+	•	remote collaboration
+	•	team strategy sessions
+
+Podcast Studio
+A dedicated podcast and recording studio available for:
+	•	podcast production
+	•	interviews
+	•	video recording
+	•	media content creation
+
+Key Amenities
+• enterprise-grade internet • video-enabled conference rooms • podcast studio • creative glare-free workspace • natural light collaboration areas • quiet focus zones • community gathering spaces
+
+9. Technical Requirements
+Frontend
+Recommended frameworks:
+	•	Next.js
+	•	React
+Hosting
+Recommended hosting platforms:
+	•	Vercel
+	•	Netlify
+Domain
+The company already owns a domain which will be connected to the deployed site.
+
+10. Backend Integration
+Operational functionality will be handled by:
+CoWorks SaaS
+Capabilities include:
+	•	membership management
+	•	booking
+	•	payments
+	•	CRM
+	•	space management
+The website will serve as the frontend marketing interface for these services.
+
+11. Existing GitHub Repository
+The company currently has a repository that includes:
+	•	CRM logic
+	•	booking system
+	•	space management tools
+These features should be removed or deprecated because they will be replaced by the CoWorks backend.
+
+12. Recommended Repository Structure
+frontend/
+  pages/
+  components/
+  styles/
+  assets/
+  images/
+
+integrations/
+  coworks-api/
+
+content/
+  copy/
+
+13. Conversion Strategy
+Primary conversion actions:
+Book a Tour
+Main conversion goal.
+Join Now
+Secondary conversion.
+View Membership Plans
+Discovery conversion.
+The homepage should prioritize tour bookings first.
+
+14. User Journey
+Stage 1 — Discover
+Visitor lands on homepage.
+They understand the mission:
+Create Connect CoWork
+
+Stage 2 — Learn
+Visitors explore:
+	•	workspace features
+	•	amenities
+	•	community
+
+Stage 3 — Convert
+Visitors:
+	•	book a tour
+	•	join membership
+
+15. SEO Requirements
+Target keywords:
+	•	coworking space
+	•	coworking for startups
+	•	collaborative workspace
+	•	tech coworking space
+	•	startup workspace
+Each page should include:
+	•	SEO titles
+	•	meta descriptions
+	•	schema markup
+
+16. Performance Requirements
+The site should achieve:
+	•	Lighthouse score above 90
+	•	page load under 2 seconds
+	•	mobile optimized experience
+
+17. Mobile Requirements
+Responsive design for:
+	•	mobile
+	•	tablet
+	•	desktop
+Mobile layout should prioritize:
+	•	tour booking
+	•	membership information
+
+19. Deliverables
+The AI agent or development team should produce:
+Design
+	•	wireframes
+	•	UI design system
+Development
+	•	full frontend code
+	•	CoWorks integration layer
+Deployment
+	•	hosted production website
+	•	connected domain
+
+20. Future Enhancements
+Possible future additions:
+	•	member directory
+	•	event calendar
+	•	community portal
+	•	blog / content hub
+
+21. Success Metrics
+Success will be measured by:
+	•	tour bookings
+	•	membership signups
+	•	conversion rate
+	•	website traffic
+
+22. Acceptance Criteria
+Website launch requirements:
+	•	domain connected
+	•	CoWorks integration functional
+	•	images added
+	•	all pages functional
+	•	mobile optimized
+	•	SEO configured
+
+23. AI Agent Execution Instructions
+The AI agent responsible for building the site should:
+	•	Audit the existing GitHub repository.
+	•	Remove legacy CRM and booking functionality.
+	•	Build a modern Next.js frontend.
+	•	Integrate CoWorks SaaS APIs.
+	•	Apply Convivia Work brand guidelines.
+	•	Deploy to hosting platform.
+	•	Connect the domain.
+	•	Optimize performance and SEO.
+

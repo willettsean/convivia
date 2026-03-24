@@ -3,12 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --terracotta: #C1623F;
-  --charcoal: #2C2C2C;
-  --cream: #FAF8F5;
+  --color-midnight: #000000;
+  --color-ember: #fe904d;
+  --color-copper: #d6773d;
+  --color-saffron: #ffbc59;
+  --color-stone: #0c0c0c;
 }
 
 body {
-  background-color: #FAF8F5;
-  color: #2C2C2C;
+  font-family: var(--font-body, 'Space Grotesk'), system-ui, sans-serif;
+  background-color: #ffffff;
+  color: #0c0c0c;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display, 'Bebas Neue'), 'Space Grotesk', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+::selection {
+  background: rgba(254, 144, 77, 0.25);
+  color: #0c0c0c;
 }
