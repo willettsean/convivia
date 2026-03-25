@@ -24,7 +24,7 @@ export default function Nav() {
         </Link>
 
         {/* Address — center */}
-        <div className="hidden xl:flex flex-col items-center">
+        <div className="hidden lg:flex flex-col items-center">
           <span className="text-xs font-semibold text-[#fe904d] uppercase tracking-widest">Location</span>
           <span className="text-sm font-medium text-black/70">1485 Treat Blvd. Walnut Creek, CA 94597</span>
         </div>
