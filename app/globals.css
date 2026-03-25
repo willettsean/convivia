@@ -3,23 +3,39 @@
 @tailwind utilities;
 
 :root {
-  --color-midnight: #000000;
-  --color-ember: #fe904d;
-  --color-copper: #d6773d;
+  /* Brand colors */
+  --color-ember:   #fe904d;
+  --color-copper:  #d6773d;
   --color-saffron: #ffbc59;
-  --color-stone: #0c0c0c;
+
+  /* New section colors */
+  --color-warm-gray: #f5f0eb;
+  --color-charcoal:  #2a2320;
+
+  /* Neutrals */
+  --color-white: #ffffff;
+  --color-ink:   #0c0c0c;
 }
 
 body {
-  font-family: var(--font-body, 'Space Grotesk'), system-ui, sans-serif;
+  font-family: var(--font-body, 'DM Sans'), system-ui, sans-serif;
   background-color: #ffffff;
   color: #0c0c0c;
 }
 
-h1, h2, h3, h4, h5, h6, .font-display {
-  font-family: var(--font-display, 'Bebas Neue'), 'Space Grotesk', sans-serif;
-  letter-spacing: 0.08em;
+/* Display font - all caps, tight tracking */
+.font-display,
+h1, h2 {
+  font-family: var(--font-display, 'Bebas Neue'), sans-serif;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+/* Mixed-case accent headings */
+h3, h4, h5, h6 {
+  font-family: var(--font-accent, 'DM Sans'), sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 ::selection {
