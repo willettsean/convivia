@@ -130,7 +130,7 @@ export default function HomePage() {
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#fe904d]">Community Signals</p>
             <h3 className="text-2xl font-bold text-[#0c0c0c]">Built for builders</h3>
             <p className="text-black/70">
-              Convivial Work attracts founders, creatives and highly productive professionals who want both momentum and community.
+              Convivia Work attracts founders, creatives and highly productive professionals who want both momentum and community.
               Expect recurring events focused on founder networking, growth strategies and other engagement opportunities to expand
               your circle of professional support.
             </p>
