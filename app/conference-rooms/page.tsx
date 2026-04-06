@@ -2,22 +2,22 @@ const rooms = [
   {
     name: 'Avid Learner',
     description:
-      'Ideal for workshops, pitch practice, and onboarding sessions. Bright natural light and writable walls keep ideas flowing while the AV stack keeps remote attendees in lockstep.',
+      'Ideal for workshops, pitch practice, and onboarding sessions. Dual 4K displays for hybrid working sessions. Flexible seating with movable desks allowing many setups for collaboration.',
   },
   {
     name: 'Scrappy',
     description:
-      'A tactical war room for fast-moving teams. Features flexible seating, stand-up tables, and a 4K display that makes quick pivots and working sessions effortless.',
+      'An executive boardroom for fast-moving teams. Features flexible seating, writable whiteboard wall, a 4K large format display that makes quick pivots and working sessions effortless.',
   },
   {
     name: 'Seeks Context',
     description:
-      'Designed for deep discovery calls and client briefings. Acoustic treatment and a generous camera framing make every stakeholder feel present.',
+      'Designed for deep discovery calls and client briefings. This four person executive space creates a focused environment for sharing and decision making.',
   },
   {
     name: 'Creative Problem Solver',
     description:
-      'Where cross-functional teams break roadblocks. Dual displays, analog tools on request, and lounge seating options support long-form ideation.',
+      'Where teams are energized by working around a high top table set up with a 4K display and glass writing board for hybrid teams to join the fun.',
   },
 ]
 
