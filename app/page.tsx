@@ -23,7 +23,7 @@ const amenities = [
   {
     title: 'Video conference rooms',
     description:
-      'Each room ships with 4K conferencing, large-format displays, and whiteboarding tools that just work.',
+      'Each room offers 4K conferencing, large-format displays, and whiteboarding tools that just work.',
   },
   {
     title: 'AV production studio',
@@ -41,7 +41,7 @@ const plans = [
       'Spend a productive day with an adjustable standing desk, monitor, kitchen access and phone booths.',
   },
   {
-    name: 'Hot Desk Membership',
+    name: 'Convivia Work Membership',
     price: '$350',
     cadence: 'per month',
     description:
@@ -114,11 +114,11 @@ export default function HomePage() {
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#fe904d]">Technology-first</p>
             <h2 className="font-display text-5xl text-[#0c0c0c]">Infrastructure that keeps up with your ambition.</h2>
             <p className="text-black/70">
-              Enterprise fiber, redundant mesh wifi, 24/7 access control, and AV-native spaces allow hybrid teams to connect with zero friction.
-              Mobile app for conference room bookings, memberships, and billing so you always know what's available.
+              Multi gigabit internet with 5G failover, redundant mesh wifi, 24/7 access control. AV native spaces allow hybrid teams to connect with zero friction.
+              Mobile app for conference room bookings, memberships and billing so you always know what's available.
             </p>
             <ul className="space-y-3 text-black/70">
-              <li className="flex items-start gap-3"><span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-[#fe904d]" />10 Gbps fiber + LTE failover</li>
+              <li className="flex items-start gap-3"><span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-[#fe904d]" />Multi gigabit internet with 5G failover</li>
               <li className="flex items-start gap-3"><span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-[#fe904d]" />4K-ready conference rooms with tactile controls</li>
               <li className="flex items-start gap-3"><span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-[#fe904d]" />AV production studio for podcast or streaming recording and events</li>
               <li className="flex items-start gap-3"><span className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-[#fe904d]" />Secure lockers and smart printing</li>
