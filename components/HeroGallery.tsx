@@ -24,27 +24,18 @@ export function HeroGallery() {
     return () => clearInterval(id)
   }, [])
 
+  const currentSet = Array.from({ length: 4 }, (_, offset) => photos[(index + offset) % photos.length])
+
   return (
-    <div className="flex-1">
-      <div className="relative h-[360px] md:h-[520px] rounded-[32px] overflow-hidden shadow-2xl">
-        <Image
-          key={photos[index]}
-          src={photos[index]}
-          alt="Convivia workspace"
-          fill
-          sizes="(min-width: 1024px) 50vw, 100vw"
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20" aria-hidden />
+    <div className="flex flex-1 flex-col gap-4" aria-label="Workspace imagery carousel">
+      <div className="grid grid-cols-2 gap-4">
+        {currentSet.slice(0, 2).map((src) => (
+          <Image key={src} src={src} alt="Convivia workspace" width={420} height={320} className="rounded-3xl object-cover" />
+        ))}
       </div>
-      <div className="mt-4 flex justify-center gap-2">
-        {photos.map((_, i) => (
-          <span
-            key={i}
-            className={`h-2 w-6 rounded-full transition-all ${i === index ? 'bg-[#fe904d]' : 'bg-black/20'}`}
-            aria-hidden
-          />
+      <div className="grid grid-cols-2 gap-4">
+        {currentSet.slice(2, 4).map((src) => (
+          <Image key={src} src={src} alt="Convivia workspace" width={420} height={320} className="rounded-3xl object-cover" />
         ))}
       </div>
     </div>
