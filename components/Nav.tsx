@@ -2,10 +2,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const links = [
-  { href: '/#workspace',  label: 'Workspace'   },
-  { href: '/#amenities',  label: 'Amenities'   },
-  { href: '/#community',  label: 'Community'   },
-  { href: '/membership',  label: 'Memberships' },
+  { href: '/#workspace',       label: 'Workspace' },
+  { href: '/#amenities',       label: 'Amenities' },
+  { href: '/conference-rooms', label: 'Conference Rooms' },
+  { href: '/membership',       label: 'Memberships' },
 ]
 
 export default function Nav() {
