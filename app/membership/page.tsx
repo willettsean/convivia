@@ -6,22 +6,22 @@ const tiers = [
     price: '$50',
     cadence: 'per day',
     intro: 'Drop in for a focused workday and sample the Convivia energy.',
-    features: ['Adjustable standing desk + ergonomic seating', 'External monitor + power + fiber-backed WiFi', 'Kitchen and coffee program access', 'Phone booths + quiet zones'],
+    features: ['Adjustable standing desk + ergonomic seating', 'External monitor and laptop stand + power + fast and reliable WiFi', 'Kitchen and coffee program access', 'Phone booths + quiet zones'],
     highlight: 'Perfect for visiting founders, fractional teams, and trial runs.',
   },
   {
-    name: 'CoWork Membership',
+    name: 'Coworking Membership',
     price: '$350',
     cadence: 'per month',
     intro: 'Everything in the Day Pass plus full-time momentum.',
-    features: ['24/7 access with smart entry', 'Conference room credits directly in the CoWorks app', 'Priority invites to founder salons + community events', 'Flexible seating across focus zones and lounges'],
+    features: ['24/7 access with smart entry', 'Conference room credits directly in your membership app', 'Priority invites to founder salons + community events', 'Flexible seating across focus zones and lounges'],
     highlight: 'Your baseline for being part of the Convivia builder community.',
   },
   {
     name: 'Dedicated Desk Membership',
     price: '$450',
     cadence: 'per month',
-    intro: 'The CoWork Membership plus a desk you can truly make your own.',
+    intro: 'The Coworking Membership plus a desk you can truly make your own.',
     features: ['Select and personalize your workstation', 'Lockable storage cabinet + mail service', 'Additional conference room credits', 'Keep gear, monitors, and peripherals in place'],
     highlight: 'Ideal for creators who want permanence without sacrificing community.',
   },
@@ -43,7 +43,7 @@ export default function MembershipPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#fe904d]">Memberships</p>
           <h1 className="font-display text-6xl text-[#0c0c0c]">Choose how you plug into Convivia Work.</h1>
           <p className="mt-4 max-w-2xl text-black/70">
-            Every plan is powered by CoWorks for seamless billing, booking, and access control. Start with a day pass or jump straight into a membership—
+            Every plan is powered by our mobile app for seamless billing, booking, and access control. Start with a day pass or jump straight into a membership—
             we’ll tailor the onboarding, credentials, and workspace tour to your needs.
           </p>
         </div>
