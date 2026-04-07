@@ -1,3 +1,5 @@
+import { buttonBase } from '@/lib/theme'
+
 export default function LocationSection() {
   return (
     <section className="bg-[#f5f0eb]">
@@ -26,7 +28,7 @@ export default function LocationSection() {
             href="https://maps.google.com/?q=1485+Treat+Blvd+Walnut+Creek+CA+94597"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex rounded-full border border-black/20 px-5 py-2 text-sm font-semibold text-black hover:border-[#fe904d] hover:text-[#fe904d] transition-colors"
+            className={`${buttonBase} px-5 py-2 text-sm`}
           >
             Open in Google Maps ↗
           </a>

@@ -1,3 +1,6 @@
+import Link from 'next/link'
+import { buttonBase } from '@/lib/theme'
+
 const rooms = [
   {
     name: 'Avid Learner',
@@ -30,7 +33,8 @@ export default function ConferenceRoomsPage() {
           <h1 className="font-display text-6xl text-[#0c0c0c]">Spaces that honor how you collaborate.</h1>
           <p className="text-black/70">
             Our conference rooms are named for the behaviors that help companies grow together. Each room is fully equipped with 4K large-format displays, studio-grade audio,
-            and plug-and-play video conferencing so hybrid meetings feel natural. Book time using the links below and we'll prep whiteboards or analog tools to match your agenda.
+            and plug-and-play video conferencing so hybrid meetings feel natural.
+            Book time using the links below and we'll prep whiteboards or analog tools to match your agenda.
           </p>
         </div>
 
@@ -45,7 +49,12 @@ export default function ConferenceRoomsPage() {
                 <li>• 4K display for screen sharing & presentations</li>
                 <li>• Whiteboards available on request</li>
               </ul>
-              <p className="mt-4 text-sm font-semibold text-black/60">Book via CoWorks or contact the Convivia team for curated setups.</p>
+              <Link
+                href="/book-a-tour"
+                className={`${buttonBase} mt-6 px-5 py-2 text-sm`}
+              >
+                Book Now
+              </Link>
             </div>
           ))}
         </div>

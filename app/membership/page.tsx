@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { buttonBase } from '@/lib/theme'
 
 const tiers = [
   {
@@ -68,12 +69,17 @@ export default function MembershipPage() {
                 ))}
               </ul>
               <p className="mt-4 text-sm font-semibold text-black/60">{tier.highlight}</p>
-              <Link
-                href="/book-a-tour"
-                className="mt-6 inline-flex rounded-full border border-black/20 px-4 py-2 text-sm font-semibold text-black hover:border-[#fe904d] hover:text-[#fe904d] transition-colors"
-              >
-                Book a tour
-              </Link>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link href="/book-a-tour" className={`${buttonBase} px-4 py-2 text-sm`}>
+                  Book a tour
+                </Link>
+                <Link
+                  href={`mailto:hello@conviviawork.com?subject=${encodeURIComponent(`${tier.name} Sign Up`)}`}
+                  className={`${buttonBase} px-4 py-2 text-sm`}
+                >
+                  Sign Up
+                </Link>
+              </div>
             </div>
           ))}
         </div>

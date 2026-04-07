@@ -1,3 +1,5 @@
+import { buttonBase } from '@/lib/theme'
+
 export default function BookTourPage() {
   return (
     <div className="mx-auto max-w-4xl px-6 py-20 text-white">
@@ -23,7 +25,7 @@ export default function BookTourPage() {
           What do you need from your workspace?
           <textarea className="mt-2 w-full rounded-2xl border border-white/20 bg-black/40 px-4 py-3 text-white" rows={4} />
         </label>
-        <button className="w-full rounded-full bg-[#fe904d] px-8 py-4 text-xs uppercase tracking-[0.3em] text-black">
+        <button className={`${buttonBase} w-full justify-center px-8 py-4 text-xs uppercase tracking-[0.3em]`}>
           Request tour (CoWorks coming soon)
         </button>
       </div>

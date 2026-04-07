@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { HeroGallery } from '@/components/HeroGallery'
 import LocationSection from '@/components/LocationSection'
+import { buttonBase } from '@/lib/theme'
 
 const stats = [
   { label: 'Adjustable standing desks with monitors', value: '72' },
@@ -72,16 +73,10 @@ export default function HomePage() {
               and fully instrumented conference rooms create momentum for the people who build things.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/book-a-tour"
-                className="rounded-full bg-[#fe904d] px-8 py-3 text-sm font-semibold text-white transition hover:bg-[#d6773d]"
-              >
+              <Link href="/book-a-tour" className={`${buttonBase} px-8 py-3 text-sm`}>
                 Book a Tour
               </Link>
-              <Link
-                href="/membership"
-                className="rounded-full border border-black/15 px-8 py-3 text-sm font-semibold text-black transition hover:border-[#fe904d]"
-              >
+              <Link href="/membership" className={`${buttonBase} px-8 py-3 text-sm`}>
                 View Memberships
               </Link>
             </div>
@@ -175,12 +170,19 @@ export default function HomePage() {
                 <p className="font-display text-5xl text-[#0c0c0c] mt-2">{plan.price}</p>
                 <p className="text-sm font-medium text-black/40">{plan.cadence}</p>
                 <p className="mt-4 text-black/70">{plan.description}</p>
-                <Link
-                  href="/book-a-tour"
-                  className="mt-6 inline-flex rounded-full border border-black/15 px-4 py-2 text-sm font-semibold text-black hover:border-[#fe904d] hover:text-[#fe904d] transition-colors"
-                >
-                  Book a tour
-                </Link>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Link href="/book-a-tour" className={`${buttonBase} px-4 py-2 text-sm`}>
+                    Book a tour
+                  </Link>
+                  {(plan.name === 'Day Pass' || plan.name === 'CoWork Membership') && (
+                    <Link
+                      href={`mailto:hello@conviviawork.com?subject=${encodeURIComponent(`${plan.name} Sign Up`)}`}
+                      className={`${buttonBase} px-4 py-2 text-sm`}
+                    >
+                      Sign Up
+                    </Link>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -196,10 +198,10 @@ export default function HomePage() {
             Walk through Convivia Work, test the network, and grab a coffee with our community team.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/book-a-tour" className="rounded-full bg-[#fe904d] px-8 py-3 text-sm font-semibold text-white hover:bg-[#d6773d] transition-colors">
+            <Link href="/book-a-tour" className={`${buttonBase} px-8 py-3 text-sm`}>
               Book a Tour
             </Link>
-            <Link href="/contact" className="rounded-full border border-white/30 px-8 py-3 text-sm font-semibold text-white hover:border-white transition-colors">
+            <Link href="/contact" className={`${buttonBase} px-8 py-3 text-sm`}>
               Contact Team
             </Link>
           </div>
