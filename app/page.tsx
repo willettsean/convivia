@@ -191,6 +191,11 @@ export default function HomePage() {
                       Sign Up
                     </Link>
                   )}
+                  {plan.name === 'Team Suite' && (
+                    <Link href={URLS.contact} target="_blank" rel="noopener noreferrer" className={`${buttonBase} px-4 py-2 text-sm`}>
+                      Contact Team
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}
