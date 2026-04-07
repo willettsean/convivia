@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { buttonBase } from '@/lib/theme'
 
+const BOOK_URL = 'https://conviviawork.coworksapp.com/book/716'
+
 const rooms = [
   {
     name: 'Avid Learner',
@@ -50,7 +52,9 @@ export default function ConferenceRoomsPage() {
                 <li>• Whiteboards available on request</li>
               </ul>
               <Link
-                href="/book-a-tour"
+                href={BOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`${buttonBase} mt-6 px-5 py-2 text-sm`}
               >
                 Book Now

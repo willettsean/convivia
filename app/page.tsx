@@ -3,6 +3,13 @@ import { HeroGallery } from '@/components/HeroGallery'
 import LocationSection from '@/components/LocationSection'
 import { buttonBase } from '@/lib/theme'
 
+const URLS = {
+  tour:       'https://conviviawork.coworksapp.com/tour-request/716',
+  dayPass:    'https://conviviawork.coworksapp.com/day-pass-signup/716?plan=11611',
+  cowork:     'https://conviviawork.coworksapp.com/membership-signup/11506',
+  contact:    'https://conviviawork.coworksapp.com/membership-request/716',
+}
+
 const stats = [
   { label: 'Adjustable standing desks with monitors', value: '72' },
   { label: 'Video conference meeting rooms large and small', value: '4' },
@@ -73,7 +80,7 @@ export default function HomePage() {
               and fully instrumented conference rooms create momentum for the people who build things.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link href="/book-a-tour" className={`${buttonBase} px-8 py-3 text-sm`}>
+              <Link href={URLS.tour} target="_blank" rel="noopener noreferrer" className={`${buttonBase} px-8 py-3 text-sm`}>
                 Book a Tour
               </Link>
               <Link href="/membership" className={`${buttonBase} px-8 py-3 text-sm`}>
@@ -171,14 +178,16 @@ export default function HomePage() {
                 <p className="text-sm font-medium text-black/40">{plan.cadence}</p>
                 <p className="mt-4 text-black/70">{plan.description}</p>
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <Link href="/book-a-tour" className={`${buttonBase} px-4 py-2 text-sm`}>
+                  <Link href={URLS.tour} target="_blank" rel="noopener noreferrer" className={`${buttonBase} px-4 py-2 text-sm`}>
                     Book a tour
                   </Link>
-                  {(plan.name === 'Day Pass' || plan.name === 'CoWork Membership') && (
-                    <Link
-                      href={`mailto:hello@conviviawork.com?subject=${encodeURIComponent(`${plan.name} Sign Up`)}`}
-                      className={`${buttonBase} px-4 py-2 text-sm`}
-                    >
+                  {plan.name === 'Day Pass' && (
+                    <Link href={URLS.dayPass} target="_blank" rel="noopener noreferrer" className={`${buttonBase} px-4 py-2 text-sm`}>
+                      Sign Up
+                    </Link>
+                  )}
+                  {plan.name === 'CoWork Membership' && (
+                    <Link href={URLS.cowork} target="_blank" rel="noopener noreferrer" className={`${buttonBase} px-4 py-2 text-sm`}>
                       Sign Up
                     </Link>
                   )}
@@ -198,10 +207,10 @@ export default function HomePage() {
             Walk through Convivia Work, test the network, and grab a coffee with our community team.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/book-a-tour" className={`${buttonBase} px-8 py-3 text-sm`}>
+            <Link href={URLS.tour} target="_blank" rel="noopener noreferrer" className={`${buttonBase} px-8 py-3 text-sm`}>
               Book a Tour
             </Link>
-            <Link href="/contact" className={`${buttonBase} px-8 py-3 text-sm`}>
+            <Link href={URLS.contact} target="_blank" rel="noopener noreferrer" className={`${buttonBase} px-8 py-3 text-sm`}>
               Contact Team
             </Link>
           </div>

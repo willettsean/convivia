@@ -39,7 +39,7 @@ export default function Nav() {
               </Link>
             ))}
             <Link
-              href="/book-a-tour"
+              href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" rel="noopener noreferrer"
               className="rounded-full bg-[#fe904d] px-5 py-2 text-sm font-semibold text-white transition hover:bg-[#d6773d]"
             >
               Book a Tour
@@ -48,7 +48,7 @@ export default function Nav() {
 
           {/* Mobile CTA */}
           <Link
-            href="/book-a-tour"
+            href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" rel="noopener noreferrer"
             className="lg:hidden rounded-full bg-[#fe904d] px-4 py-2 text-xs font-semibold text-white"
           >
             Book a Tour
