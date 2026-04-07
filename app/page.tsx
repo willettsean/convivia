@@ -49,7 +49,7 @@ const plans = [
       'Spend a productive day with an adjustable standing desk, monitor, kitchen access and phone booths.',
   },
   {
-    name: 'CoWork Membership',
+    name: 'Coworking Membership',
     price: '$350',
     cadence: 'per month',
     description:
@@ -186,7 +186,7 @@ export default function HomePage() {
                       Sign Up
                     </Link>
                   )}
-                  {plan.name === 'CoWork Membership' && (
+                  {plan.name === 'Coworking Membership' && (
                     <Link href={URLS.cowork} target="_blank" rel="noopener noreferrer" className={`${buttonBase} px-4 py-2 text-sm`}>
                       Sign Up
                     </Link>
