@@ -5,6 +5,7 @@ const links = [
   { href: '/#workspace',       label: 'Workspace' },
   { href: '/#amenities',       label: 'Amenities' },
   { href: '/conference-rooms', label: 'Conference Rooms' },
+  { href: '/av-studio',        label: 'AV Studio' },
   { href: '/membership',       label: 'Memberships' },
 ]
 
