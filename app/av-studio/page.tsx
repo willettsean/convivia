@@ -51,7 +51,7 @@ export default function AvStudioPage() {
           </ul>
           <div className="flex flex-wrap gap-3">
             <Link href={BOOK_URL} target="_blank" rel="noopener noreferrer" className={`${buttonBase} px-5 py-2 text-sm`}>
-              Reserve time
+              Book the Studio
             </Link>
             <Link href="https://conviviawork.coworksapp.com/membership-request/716" target="_blank" rel="noopener noreferrer" className={`${buttonBase} px-5 py-2 text-sm`}>
               Talk to our team
