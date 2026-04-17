@@ -4,7 +4,7 @@ const sections = [
     items: [
       {
         q: 'What is Convivia Work?',
-        a: 'Convivia Work is a technology-first coworking space in Walnut Creek, CA, built for founders, creatives, and highly productive professionals. The space features glare-free focus zones, natural light collaboration areas, fully equipped conference rooms, and a professional-grade AV production studio—all running on multi-gigabit infrastructure with 5G failover.',
+        a: 'Convivia Work is a technology first coworking space in Walnut Creek, CA, built for founders, creatives, and highly productive professionals. The space features glare free focus zones, natural light collaboration areas, fully equipped conference rooms, and a professional grade AV production studio—all running on multigigabit infrastructure with 5G failover.',
       },
       {
         q: 'Where are you located?',
@@ -12,11 +12,11 @@ const sections = [
       },
       {
         q: 'What are your hours?',
-        a: 'Our team is on-site Monday–Friday, 9am–5pm Pacific. Members with a Coworking Membership or above enjoy 24/7 keyless access via our mobile app.',
+        a: 'Our team is onsite Monday–Friday, 9am–5pm Pacific. Members with a Coworking Membership or above enjoy 24/7 keyless access via our mobile app.',
       },
       {
         q: 'Is parking available?',
-        a: 'Yes—parking is available on a first-come, first-served basis.',
+        a: 'Yes—parking is available on a first come, first served basis.',
       },
       {
         q: 'Is the space ADA accessible?',
@@ -24,7 +24,7 @@ const sections = [
       },
       {
         q: 'What types of people work at Convivia Work?',
-        a: 'Our community includes startup founders, freelancers, content creators, small teams, and driven professionals who want a high-performance workspace with a community to match.',
+        a: 'Our community includes startup founders, freelancers, content creators, small teams, and driven professionals who want a high performance workspace with a community to match.',
       },
     ],
   },
@@ -36,8 +36,8 @@ const sections = [
         a: "We offer four plans:\n\n• Day Pass — $50/day. Adjustable standing desk, monitor, kitchen and coffee access, and phone booth access.\n• Coworking Membership — $350/month. 24/7 access, conference room credits, and priority invites to community and founder events.\n• Dedicated Desk Membership — $450/month. Everything in Coworking, plus a permanent personalized workstation with lockable storage and mail service eligibility.\n• Custom Team Suite — Custom pricing for teams of 2–12, with a private dedicated space and full access to shared amenities.",
       },
       {
-        q: 'Are memberships month-to-month?',
-        a: 'Yes. All memberships are month-to-month with no long-term commitment required.',
+        q: 'Are memberships month to month?',
+        a: 'Yes. All memberships are month to month with no long term commitment required.',
       },
       {
         q: 'How do I sign up?',
@@ -56,8 +56,8 @@ const sections = [
         a: 'Guests are welcome in conference rooms as part of your booking. Outside of a conference room reservation, guests will need to pay the day pass fee to access the space.',
       },
       {
-        q: 'Are there additional costs for amenities like printing, mail, or Wi-Fi?',
-        a: 'Wi-Fi, kitchen access, and coffee are included with all memberships. Printing is available on-site. Mail and package handling is available as an add-on service—reach out to our team to coordinate.',
+        q: 'Are there additional costs for amenities like printing, mail, or WiFi?',
+        a: 'WiFi, kitchen access, and coffee are included with all memberships. Printing is available onsite. Mail and package handling is available as an add on service—reach out to our team to coordinate.',
       },
     ],
   },
@@ -66,11 +66,11 @@ const sections = [
     items: [
       {
         q: 'What spaces are available at Convivia Work?',
-        a: '• Focus zones — Glare-free adjustable standing desks with monitors, purpose-built for deep work\n• Collaboration areas — Expansive windows and modular seating for brainstorms and casual standups\n• Phone booths and quiet zones — For private calls and heads-down focus\n• 4 conference rooms — Avid Learner, Scrappy, Seeks Context, and Creative Problem Solver, each with 4K displays, video conferencing, and whiteboards\n• AV Production Studio — Green screen, acoustic dampening, cinema lighting, and full production hookups',
+        a: '• Focus zones — Glare free adjustable standing desks with monitors, purpose built for deep work\n• Collaboration areas — Expansive windows and modular seating for brainstorms and casual standups\n• Phone booths and quiet zones — For private calls and heads down focus\n• 4 conference rooms — Avid Learner, Scrappy, Seeks Context, and Creative Problem Solver, each with 4K displays, video conferencing, and whiteboards\n• AV Production Studio — Green screen, acoustic dampening, cinema lighting, and full production hookups',
       },
       {
         q: 'What internet speeds can I expect?',
-        a: 'Multi-gigabit internet with redundant mesh WiFi and 5G failover backup—designed to handle video calls, live streaming, large file transfers, and anything else you throw at it.',
+        a: 'Multigigabit internet with redundant mesh WiFi and 5G failover backup—designed to handle video calls, live streaming, large file transfers, and anything else you throw at it.',
       },
       {
         q: 'Is coffee and kitchen access included?',
@@ -78,15 +78,15 @@ const sections = [
       },
       {
         q: 'Is printing available?',
-        a: 'Yes, printing is available on-site.',
+        a: 'Yes, printing is available onsite.',
       },
       {
         q: 'Is mail and package service available?',
-        a: 'Mail and package handling is available as an add-on service. Contact our team to get set up.',
+        a: 'Mail and package handling is available as an add on service. Contact our team to get set up.',
       },
       {
         q: 'What is the AV Production Studio?',
-        a: 'A fully equipped, production-ready studio featuring premium sound dampening, a built-in green screen, interchangeable backgrounds, cinema-grade lighting, and plug-and-play hookups for cameras, teleprompters, and streaming rigs. Ideal for podcasters, video creators, educators, and teams. Book it through our mobile app.',
+        a: 'A fully equipped, production ready studio featuring premium sound dampening, a built in green screen, interchangeable backgrounds, cinema grade lighting, and plug and play hookups for cameras, teleprompters, and streaming rigs. Ideal for podcasters, video creators, educators, and teams. Book it through our mobile app.',
       },
     ],
   },
