@@ -21,7 +21,7 @@ const tiers = [
   },
   {
     name: 'Coworking Membership',
-    price: '$350',
+    price: '$382',
     cadence: 'per month',
     intro: 'Everything in the Day Pass plus full-time momentum.',
     features: ['24/7 access with smart entry', 'Conference room credits directly in your membership app', 'Priority invites to founder salons + community events', 'Flexible seating across focus zones and lounges'],

@@ -33,7 +33,7 @@ const sections = [
     items: [
       {
         q: 'What membership options are available?',
-        a: "We offer four plans:\n\n• Day Pass — $50/day. Adjustable standing desk, monitor, kitchen and coffee access, and phone booth access.\n• Coworking Membership — $350/month. 24/7 access, conference room credits, and priority invites to community and founder events.\n• Dedicated Desk Membership — $450/month. Everything in Coworking, plus a permanent personalized workstation with lockable storage and mail service eligibility.\n• Custom Team Suite — Custom pricing for teams of 2–12, with a private dedicated space and full access to shared amenities.",
+        a: "We offer four plans:\n\n• Day Pass — $50/day. Adjustable standing desk, monitor, kitchen and coffee access, and phone booth access.\n• Coworking Membership — $382/month. 24/7 access, conference room credits, and priority invites to community and founder events.\n• Dedicated Desk Membership — $450/month. Everything in Coworking, plus a permanent personalized workstation with lockable storage and mail service eligibility.\n• Custom Team Suite — Custom pricing for teams of 2–12, with a private dedicated space and full access to shared amenities.",
       },
       {
         q: 'Are memberships month to month?',

@@ -50,7 +50,7 @@ const plans = [
   },
   {
     name: 'Coworking Membership',
-    price: '$350',
+    price: '$382',
     cadence: 'per month',
     description:
       'Unlimited access, adjustable standing desk, monitor, conference room credits, and priority invites to founder salons.',
