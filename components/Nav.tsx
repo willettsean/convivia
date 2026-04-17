@@ -30,7 +30,7 @@ export default function Nav() {
           {/* Address — center, desktop only */}
           <div className="hidden lg:flex flex-col items-center">
             <span className="text-xs font-semibold text-[#fe904d] uppercase tracking-widest">Location</span>
-            <span className="text-sm font-medium text-black/70">1485 Treat Blvd. Walnut Creek, CA 94597</span>
+            <span className="text-sm font-medium text-black/70">1485 Treat Blvd. Walnut Creek, CA</span>
           </div>
 
           {/* Nav links */}
@@ -60,7 +60,7 @@ export default function Nav() {
         {/* Address — mobile/tablet strip, below logo row */}
         <div className="lg:hidden border-t border-black/5 py-2 text-center">
           <span className="text-xs font-medium text-black/60">
-            📍 1485 Treat Blvd. Walnut Creek, CA 94597
+            📍 1485 Treat Blvd. Walnut Creek, CA
           </span>
         </div>
       </div>
