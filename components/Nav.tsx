@@ -6,6 +6,7 @@ const links = [
   { href: '/conference-rooms', label: 'Conference Rooms' },
   { href: '/av-studio',        label: 'AV Studio' },
   { href: '/membership',       label: 'Memberships' },
+  { href: '/faq',              label: 'FAQ' },
 ]
 
 export default function Nav() {
