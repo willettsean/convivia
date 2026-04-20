@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Bebas_Neue, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/Nav'
+import CookieManager from '@/components/CookieManager'
+import ManageCookiesButton from '@/components/ManageCookiesButton'
 
 const display = Bebas_Neue({ weight: '400', subsets: ['latin'], variable: '--font-display' })
 const body    = DM_Sans({ subsets: ['latin'], variable: '--font-body', weight: ['400','500','600','700'] })
@@ -30,8 +32,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <span className="hidden h-4 w-px bg-white/20 sm:block" aria-hidden />
             <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
             <a href="/terms"   className="hover:text-white transition-colors">Terms</a>
+            <span className="hidden h-4 w-px bg-white/20 sm:block" aria-hidden />
+            <ManageCookiesButton />
           </div>
         </footer>
+        <CookieManager />
       </body>
     </html>
   )
