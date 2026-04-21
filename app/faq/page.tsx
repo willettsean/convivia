@@ -108,7 +108,7 @@ const sections = [
     items: [
       {
         q: 'Are pets allowed?',
-        a: 'Yes, pets are welcome with an additional deposit and fee. Contact our team to coordinate before bringing your pet in.',
+        a: 'We love your pets, but unfortunately they are not permitted in the office. We hope you understand!',
       },
       {
         q: 'Can I try the space before committing to a membership?',
