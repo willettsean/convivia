@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Font Compare — Convivia Work</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange: #fe904d;
+      --orange-dark: #d6773d;
+      --dark: #2a2320;
+      --cream: #f5f0eb;
+      --black: #0c0c0c;
+    }
+    body { font-family: 'Inter', sans-serif; background: #e8e4e0; color: var(--black); -webkit-font-smoothing: antialiased; }
+
+    .page-header {
+      background: var(--dark);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .page-header p {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .page-header h1 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 1400px;
+      margin: 40px auto;
+      padding: 0 24px 80px;
+    }
+
+    .col-label {
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.4);
+      padding: 0 24px 20px;
+    }
+    .col-label span { color: var(--orange); }
+
+    /* ── shared section styles ── */
+    .top-bar {
+      background: var(--dark);
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+    .top-bar a { color: var(--orange); text-decoration: none; margin-left: 8px; }
+
+    .hero {
+      position: relative;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--dark);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+    }
+    .hero video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      padding: 0 24px;
+      max-width: 700px;
+    }
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      margin-top: 16px;
+      font-weight: 400;
+    }
+
+    /* DM Serif version */
+    .dm .hero-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+    .dm .section-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.1;
+    }
+    .dm .plan-price {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.6rem;
+    }
+
+    /* Inter version */
+    .inter .hero-headline {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+    }
+    .inter .section-headline {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+    .inter .plan-price {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 2.6rem;
+      letter-spacing: -0.04em;
+    }
+
+    /* About section */
+    .about {
+      background: #fff;
+      padding: 56px 40px;
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .about-body {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: rgba(0,0,0,0.6);
+      margin-top: 14px;
+    }
+    .about-img {
+      background: var(--cream);
+      border-radius: 16px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(0,0,0,0.2);
+      font-size: 0.8rem;
+    }
+
+    /* Tech section */
+    .tech {
+      background: var(--dark);
+      padding: 48px 40px;
+    }
+    .tech-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+    .tech-sub {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+      max-width: 280px;
+      flex-shrink: 0;
+    }
+    .tech-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 32px;
+    }
+    .tech-stat { padding-right: 24px; border-right: 1px solid rgba(255,255,255,0.08); }
+    .tech-stat:last-child { border-right: none; padding-left: 24px; }
+    .tech-stat:nth-child(2), .tech-stat:nth-child(3) { padding-left: 24px; }
+    .stat-num-dm {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-num-inter {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 2.4rem;
+      letter-spacing: -0.04em;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label { font-size: 0.75rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .stat-sub { font-size: 0.7rem; color: rgba(255,255,255,0.35); line-height: 1.45; }
+
+    /* Memberships */
+    .memberships { background: #fff; padding: 48px 40px; }
+    .plans-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+    .plan-card {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    .plan-card.featured { background: var(--dark); color: #fff; }
+    .plan-tier { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(0,0,0,0.35); margin-bottom: 6px; }
+    .plan-card.featured .plan-tier { color: rgba(255,255,255,0.4); }
+    .plan-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .plan-card.featured .plan-name { color: #fff; }
+    .plan-period { font-size: 0.75rem; color: rgba(0,0,0,0.4); }
+    .plan-card.featured .plan-period { color: rgba(255,255,255,0.4); }
+    .plan-card.featured .plan-price { color: var(--orange); }
+
+    /* Page hero dark */
+    .page-hero {
+      background: var(--dark);
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .page-hero-sub { font-size: 0.9rem; color: rgba(255,255,255,0.55); margin-top: 10px; }
+
+    .col-wrap {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    }
+    .col-wrap + .col-wrap { margin-left: 24px; }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <p>Font Comparison</p>
+    <h1>DM Serif Display (current) vs. Inter for all headlines</h1>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:1400px; margin:40px auto; padding:0 24px 80px;">
+
+    <!-- Labels -->
+    <div class="col-label">DM Serif Display <span>— CURRENT</span></div>
+    <div class="col-label">Inter 800 <span>— OPTION</span></div>
+
+    <!-- DM Serif Column -->
+    <div class="col-wrap dm">
+      <!-- Hero -->
+      <div class="hero">
+        <video autoplay muted loop playsinline>
+          <source src="https://sbierwith-cloud.github.io/Mirago/hero-bg.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Create • Connect • CoWork</p>
+          <h1 class="hero-headline">A workspace built for momentum.</h1>
+          <p class="hero-sub">Walnut Creek's only tech-forward coworking space — built for founders, creators, and high-output professionals.</p>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="about">
+        <div class="about-inner">
+          <div>
+            <p class="eyebrow">Walnut Creek, California</p>
+            <h2 class="section-headline">More than a desk. A place to do your best work.</h2>
+            <p class="about-body">Convivia Work is built around the idea that your environment shapes your output. Every detail — from the ergonomics to the network — was chosen with serious work in mind.</p>
+          </div>
+          <div class="about-img">[ photo grid ]</div>
+        </div>
+      </div>
+
+      <!-- Tech -->
+      <div class="tech">
+        <div class="tech-top">
+          <div>
+            <p class="eyebrow" style="color:var(--orange)">Infrastructure</p>
+            <h2 class="section-headline" style="color:#fff">Built for people who can't afford slow.</h2>
+          </div>
+          <p class="tech-sub">Multigigabit internet. 5G failover. 4K conferencing. A production studio. Smart access.</p>
+        </div>
+        <div class="tech-stats">
+          <div class="tech-stat">
+            <div class="stat-num-dm" style="font-size:1.6rem">Multi<br>gigabit</div>
+            <div class="stat-label">Internet + 5G</div>
+            <div class="stat-sub">Redundant mesh WiFi, 5G failover</div>
+          </div>
+          <div class="tech-stat">
+            <div class="stat-num-dm">4K</div>
+            <div class="stat-label">Conference Rooms</div>
+            <div class="stat-sub">4 rooms, plug-and-play video</div>
+          </div>
+          <div class="tech-stat">
+            <div class="stat-num-dm">24/7</div>
+            <div class="stat-label">Keyless Access</div>
+            <div class="stat-sub">Mobile app entry + booking</div>
+          </div>
+          <div class="tech-stat">
+            <div class="stat-num-dm">1</div>
+            <div class="stat-label">Pro AV Studio</div>
+            <div class="stat-sub">Green screen, cinema lights</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Memberships -->
+      <div class="memberships">
+        <p class="eyebrow">Memberships</p>
+        <h2 class="section-headline">Choose how you plug into Convivia Work.</h2>
+        <div class="plans-grid">
+          <div class="plan-card">
+            <div class="plan-tier">Day Pass</div>
+            <div class="plan-name">Day Pass</div>
+            <div class="plan-price">$50</div>
+            <div class="plan-period">per day</div>
+          </div>
+          <div class="plan-card featured">
+            <div class="plan-tier">Most Popular</div>
+            <div class="plan-name">Coworking Membership</div>
+            <div class="plan-price">$382</div>
+            <div class="plan-period">per month</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page hero -->
+      <div class="page-hero">
+        <p class="eyebrow">FAQ</p>
+        <h1 class="section-headline" style="color:#fff; font-size: clamp(2rem, 3vw, 2.8rem)">Everything you need to know.</h1>
+        <p class="page-hero-sub">Can't find what you're looking for? Reach out to our team.</p>
+      </div>
+    </div>
+
+    <!-- Inter Column -->
+    <div class="col-wrap inter">
+      <!-- Hero -->
+      <div class="hero">
+        <video autoplay muted loop playsinline>
+          <source src="https://sbierwith-cloud.github.io/Mirago/hero-bg.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Create • Connect • CoWork</p>
+          <h1 class="hero-headline">A workspace built for momentum.</h1>
+          <p class="hero-sub">Walnut Creek's only tech-forward coworking space — built for founders, creators, and high-output professionals.</p>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="about">
+        <div class="about-inner">
+          <div>
+            <p class="eyebrow">Walnut Creek, California</p>
+            <h2 class="section-headline">More than a desk. A place to do your best work.</h2>
+            <p class="about-body">Convivia Work is built around the idea that your environment shapes your output. Every detail — from the ergonomics to the network — was chosen with serious work in mind.</p>
+          </div>
+          <div class="about-img">[ photo grid ]</div>
+        </div>
+      </div>
+
+      <!-- Tech -->
+      <div class="tech">
+        <div class="tech-top">
+          <div>
+            <p class="eyebrow" style="color:var(--orange)">Infrastructure</p>
+            <h2 class="section-headline" style="color:#fff">Built for people who can't afford slow.</h2>
+          </div>
+          <p class="tech-sub">Multigigabit internet. 5G failover. 4K conferencing. A production studio. Smart access.</p>
+        </div>
+        <div class="tech-stats">
+          <div class="tech-stat">
+            <div class="stat-num-inter" style="font-size:1.5rem; letter-spacing:-0.03em">Multi<br>gigabit</div>
+            <div class="stat-label">Internet + 5G</div>
+            <div class="stat-sub">Redundant mesh WiFi, 5G failover</div>
+          </div>
+          <div class="tech-stat">
+            <div class="stat-num-inter">4K</div>
+            <div class="stat-label">Conference Rooms</div>
+            <div class="stat-sub">4 rooms, plug-and-play video</div>
+          </div>
+          <div class="tech-stat">
+            <div class="stat-num-inter">24/7</div>
+            <div class="stat-label">Keyless Access</div>
+            <div class="stat-sub">Mobile app entry + booking</div>
+          </div>
+          <div class="tech-stat">
+            <div class="stat-num-inter">1</div>
+            <div class="stat-label">Pro AV Studio</div>
+            <div class="stat-sub">Green screen, cinema lights</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Memberships -->
+      <div class="memberships">
+        <p class="eyebrow">Memberships</p>
+        <h2 class="section-headline">Choose how you plug into Convivia Work.</h2>
+        <div class="plans-grid">
+          <div class="plan-card">
+            <div class="plan-tier">Day Pass</div>
+            <div class="plan-name">Day Pass</div>
+            <div class="plan-price">$50</div>
+            <div class="plan-period">per day</div>
+          </div>
+          <div class="plan-card featured">
+            <div class="plan-tier">Most Popular</div>
+            <div class="plan-name">Coworking Membership</div>
+            <div class="plan-price">$382</div>
+            <div class="plan-period">per month</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page hero -->
+      <div class="page-hero">
+        <p class="eyebrow">FAQ</p>
+        <h1 class="section-headline" style="color:#fff; font-size: clamp(2rem, 3vw, 2.8rem)">Everything you need to know.</h1>
+        <p class="page-hero-sub">Can't find what you're looking for? Reach out to our team.</p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
