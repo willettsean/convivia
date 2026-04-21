@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section Concepts — Convivia Work</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange: #fe904d;
+      --orange-dark: #d6773d;
+      --dark: #2a2320;
+      --cream: #f5f0eb;
+      --black: #0c0c0c;
+    }
+    body { font-family: 'Inter', sans-serif; background: #f0ece8; color: var(--black); -webkit-font-smoothing: antialiased; }
+    .font-display { font-family: 'Playfair Display', serif; }
+
+    /* ── Concept labels ── */
+    .concept-wrapper { max-width: 1200px; margin: 0 auto; padding: 60px 24px 0; }
+    .concept-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--dark);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    .concept-label .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+    }
+    .concept-note {
+      font-size: 0.88rem;
+      color: rgba(0,0,0,0.5);
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+    .section-divider {
+      border: none;
+      border-top: 2px dashed rgba(0,0,0,0.15);
+      margin: 56px 0 0;
+    }
+    .page-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px 32px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      margin-bottom: 0;
+    }
+    .page-header h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+    .page-header p { color: rgba(0,0,0,0.5); font-size: 0.9rem; }
+
+    /* ════════════════════════════════════════════
+       TECH-FIRST CONCEPT A
+       "Spec sheet" — horizontal stats bar with
+       large numbers anchoring each claim
+    ════════════════════════════════════════════ */
+    .tech-a {
+      background: var(--dark);
+      padding: 96px 24px;
+    }
+    .tech-a-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+    }
+    .tech-a-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+      margin-bottom: 72px;
+    }
+    .tech-a-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .tech-a-headline {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      color: #fff;
+    }
+    .tech-a-sub {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+      max-width: 420px;
+    }
+    .tech-a-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 48px;
+    }
+    .tech-a-stat {
+      padding-right: 40px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .tech-a-stat:first-child { padding-left: 0; }
+    .tech-a-stat:last-child { border-right: none; padding-left: 40px; }
+    .tech-a-stat:nth-child(2),
+    .tech-a-stat:nth-child(3) { padding-left: 40px; }
+    .tech-a-stat-num {
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 8px;
+      font-family: 'Playfair Display', serif;
+    }
+    .tech-a-stat-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .tech-a-stat-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    /* ════════════════════════════════════════════
+       TECH-FIRST CONCEPT B
+       "Feature rows" — alternating icon + text
+       rows that read like a product spec page
+    ════════════════════════════════════════════ */
+    .tech-b {
+      background: #fff;
+      padding: 96px 24px;
+    }
+    .tech-b-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+    }
+    .tech-b-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .tech-b-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .tech-b-headline {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      max-width: 600px;
+      margin: 0 auto 16px;
+    }
+    .tech-b-sub {
+      font-size: 1rem;
+      color: rgba(0,0,0,0.5);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .tech-b-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(0,0,0,0.06);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .tech-b-feature {
+      background: #fff;
+      padding: 36px 40px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    .tech-b-feature:nth-child(odd):last-child {
+      grid-column: 1 / -1;
+    }
+    .tb-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .tb-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--orange);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .tb-text strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .tb-text span {
+      font-size: 0.88rem;
+      color: rgba(0,0,0,0.55);
+      line-height: 1.6;
+    }
+
+    /* ════════════════════════════════════════════
+       AMENITIES CONCEPT A
+       "Space types" — photo-forward cards with
+       real images and a single strong descriptor
+    ════════════════════════════════════════════ */
+    .am-a {
+      background: #fff;
+      padding: 96px 24px;
+    }
+    .am-a-inner { max-width: 1152px; margin: 0 auto; }
+    .am-a-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .am-a-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .am-a-headline {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      line-height: 1.1;
+    }
+    .am-a-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--orange);
+      text-decoration: none;
+      border-bottom: 2px solid var(--orange);
+      padding-bottom: 2px;
+      white-space: nowrap;
+    }
+    .am-a-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .am-a-card {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background: var(--dark);
+      aspect-ratio: 3/4;
+    }
+    .am-a-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      display: block;
+    }
+    .am-a-card-body {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px 24px;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+    }
+    .am-a-card-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+    .am-a-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .am-a-card p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+
+    /* ════════════════════════════════════════════
+       AMENITIES CONCEPT B
+       "Checklist" — two-column split with a
+       strong headline left, scannable items right.
+       More honest about what it is.
+    ════════════════════════════════════════════ */
+    .am-b {
+      background: var(--cream);
+      padding: 96px 24px;
+    }
+    .am-b-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .am-b-left {}
+    .am-b-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .am-b-headline {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .am-b-body {
+      font-size: 0.97rem;
+      line-height: 1.75;
+      color: rgba(0,0,0,0.6);
+      margin-bottom: 36px;
+    }
+    .am-b-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark);
+      color: #fff;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .am-b-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .am-b-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .am-b-item:first-child { padding-top: 0; }
+    .am-b-item:last-child { border-bottom: none; }
+    .am-b-check {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .am-b-check svg {
+      width: 14px;
+      height: 14px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .am-b-item-text strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .am-b-item-text span {
+      font-size: 0.85rem;
+      color: rgba(0,0,0,0.5);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <h1 class="font-display">Section Concepts — Technology-First &amp; Amenities</h1>
+    <p>Two redesign options for each section. Nothing is live — this is a sandbox for your review only.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       TECH-FIRST SECTION CONCEPTS
+  ══════════════════════════════════════ -->
+
+  <div class="concept-wrapper">
+    <div class="concept-label"><span class="dot"></span>Technology-First — Concept A: "Spec Numbers"</div>
+    <p class="concept-note">Replace the bullet list + text card with hard numbers that do the selling. Dark background makes it feel like a product launch page, not a brochure.</p>
+  </div>
+
+  <!-- TECH A -->
+  <section class="tech-a">
+    <div class="tech-a-inner">
+      <div class="tech-a-top">
+        <div>
+          <p class="tech-a-eyebrow">Infrastructure</p>
+          <h2 class="tech-a-headline font-display">Built for people who can't afford slow.</h2>
+        </div>
+        <p class="tech-a-sub">Multigigabit internet. 5G failover. 4K conferencing. A production studio. Smart access. This isn't a nice-to-have list — it's the baseline we built the whole space around.</p>
+      </div>
+      <div class="tech-a-stats">
+        <div class="tech-a-stat">
+          <div class="tech-a-stat-num">10<span style="font-size:0.55em">Gbps</span></div>
+          <div class="tech-a-stat-label">Multigigabit Internet</div>
+          <div class="tech-a-stat-sub">Redundant mesh WiFi with 5G failover — never goes down</div>
+        </div>
+        <div class="tech-a-stat">
+          <div class="tech-a-stat-num">4K</div>
+          <div class="tech-a-stat-label">Conference Rooms</div>
+          <div class="tech-a-stat-sub">4 rooms, 4K displays, plug-and-play video — ready in 10 seconds</div>
+        </div>
+        <div class="tech-a-stat">
+          <div class="tech-a-stat-num">24/7</div>
+          <div class="tech-a-stat-label">Keyless Access</div>
+          <div class="tech-a-stat-sub">Mobile app entry, smart booking, and billing — all in one place</div>
+        </div>
+        <div class="tech-a-stat">
+          <div class="tech-a-stat-num">1</div>
+          <div class="tech-a-stat-label">Pro AV Studio</div>
+          <div class="tech-a-stat-sub">Green screen, cinema lights, acoustic dampening — bookable by members</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="concept-wrapper">
+    <hr class="section-divider">
+    <div style="padding-top:56px">
+      <div class="concept-label"><span class="dot"></span>Technology-First — Concept B: "Feature Grid"</div>
+      <p class="concept-note">Structured icon-and-text grid on a white background. Pairs cleanly with other sections and lets each feature breathe. More approachable than the current bullet list.</p>
+    </div>
+  </div>
+
+  <!-- TECH B -->
+  <section class="tech-b">
+    <div class="tech-b-inner">
+      <div class="tech-b-header">
+        <p class="tech-b-eyebrow">Technology-First</p>
+        <h2 class="tech-b-headline font-display">The infrastructure matches your ambition.</h2>
+        <p class="tech-b-sub">Every technical decision at Convivia Work was made for the people doing serious work.</p>
+      </div>
+      <div class="tech-b-features">
+        <div class="tech-b-feature">
+          <div class="tb-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="tb-text">
+            <strong>Multigigabit Internet + 5G Failover</strong>
+            <span>Redundant mesh WiFi across the entire space. 5G kicks in automatically if the primary line drops — your Zoom call never skips a beat.</span>
+          </div>
+        </div>
+        <div class="tech-b-feature">
+          <div class="tb-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg>
+          </div>
+          <div class="tb-text">
+            <strong>4K Conference Rooms</strong>
+            <span>Four rooms with large-format 4K displays, studio-grade audio, and plug-and-play video conferencing — no dongles, no fumbling.</span>
+          </div>
+        </div>
+        <div class="tech-b-feature">
+          <div class="tb-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 013 3v7a3 3 0 01-6 0V5a3 3 0 013-3z"/><path d="M19 10a7 7 0 01-14 0M12 19v3"/></svg>
+          </div>
+          <div class="tb-text">
+            <strong>Professional AV Production Studio</strong>
+            <span>Green screen, cinema lighting, acoustic dampening, and plug-and-play production hookups — bookable by any member through the app.</span>
+          </div>
+        </div>
+        <div class="tech-b-feature">
+          <div class="tb-icon">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <div class="tb-text">
+            <strong>24/7 Mobile App Access</strong>
+            <span>Keyless entry, room booking, billing, and community all live in the Convivia app. No fobs, no front desk required.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       AMENITIES SECTION CONCEPTS
+  ══════════════════════════════════════ -->
+
+  <div class="concept-wrapper">
+    <hr class="section-divider">
+    <div style="padding-top:56px">
+      <div class="concept-label"><span class="dot"></span>Amenities — Concept A: "Photo Cards"</div>
+      <p class="concept-note">Drop the generic text cards. Use real photos with overlaid labels — lets the space sell itself. Works especially well because Convivia has great photography.</p>
+    </div>
+  </div>
+
+  <!-- AMENITIES A -->
+  <section class="am-a">
+    <div class="am-a-inner">
+      <div class="am-a-header">
+        <div>
+          <p class="am-a-eyebrow">The Space</p>
+          <h2 class="am-a-headline font-display">Every corner has a purpose.</h2>
+        </div>
+        <a href="gallery.html" class="am-a-link">See the full gallery →</a>
+      </div>
+      <div class="am-a-grid">
+        <div class="am-a-card">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-03.jpg&w=800&q=80" alt="Focus zone">
+          <div class="am-a-card-body">
+            <span class="am-a-card-tag">Deep Work</span>
+            <h3>Glare-Free Focus Zones</h3>
+            <p>Standing desks, calibrated lighting, acoustic dampening. Built for 8-hour sessions.</p>
+          </div>
+        </div>
+        <div class="am-a-card">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-07.jpg&w=800&q=80" alt="Collaboration area">
+          <div class="am-a-card-body">
+            <span class="am-a-card-tag">Collaboration</span>
+            <h3>Natural Light Common Areas</h3>
+            <p>Expansive windows, modular seating, and room to think out loud.</p>
+          </div>
+        </div>
+        <div class="am-a-card">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fstudio-01.jpg&w=800&q=80" alt="AV Studio">
+          <div class="am-a-card-body">
+            <span class="am-a-card-tag">Production</span>
+            <h3>AV Studio</h3>
+            <p>Green screen, cinema lighting, plug-and-play hookups. Bookable by members.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="concept-wrapper">
+    <hr class="section-divider">
+    <div style="padding-top:56px">
+      <div class="concept-label"><span class="dot"></span>Amenities — Concept B: "Honest List"</div>
+      <p class="concept-note">Stop pretending the amenities list is a feature section — embrace it. A clean split layout with a strong left-column positioning statement and a tight right-column checklist reads as confident rather than filler.</p>
+    </div>
+  </div>
+
+  <!-- AMENITIES B -->
+  <section class="am-b">
+    <div class="am-b-inner">
+      <div class="am-b-left">
+        <p class="am-b-eyebrow">Included with Every Membership</p>
+        <h2 class="am-b-headline font-display">Nothing missing. Nothing extra to pay for.</h2>
+        <p class="am-b-body">Most coworking spaces charge for the things that should come standard. At Convivia, everything below is included — because you're here to work, not to track credits.</p>
+        <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="am-b-cta">
+          Book a Tour
+          <svg width="14" height="14" stroke="#fff" fill="none" stroke-width="2" viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="am-b-right">
+        <div class="am-b-item">
+          <div class="am-b-check"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5 6.5-7"/></svg></div>
+          <div class="am-b-item-text">
+            <strong>Multigigabit WiFi + 5G Failover</strong>
+            <span>The fastest internet in any coworking space in the East Bay.</span>
+          </div>
+        </div>
+        <div class="am-b-item">
+          <div class="am-b-check"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5 6.5-7"/></svg></div>
+          <div class="am-b-item-text">
+            <strong>Glare-Free Standing Desks + Monitors</strong>
+            <span>Adjustable sit/stand desks with external monitors at every station.</span>
+          </div>
+        </div>
+        <div class="am-b-item">
+          <div class="am-b-check"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5 6.5-7"/></svg></div>
+          <div class="am-b-item-text">
+            <strong>Coffee + Full Kitchen</strong>
+            <span>Good coffee, a real kitchen, and space to take a real break.</span>
+          </div>
+        </div>
+        <div class="am-b-item">
+          <div class="am-b-check"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5 6.5-7"/></svg></div>
+          <div class="am-b-item-text">
+            <strong>Phone Booths + Quiet Zones</strong>
+            <span>Private call booths and heads-down areas when you need to go dark.</span>
+          </div>
+        </div>
+        <div class="am-b-item">
+          <div class="am-b-check"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5 6.5-7"/></svg></div>
+          <div class="am-b-item-text">
+            <strong>Conference Room Credits</strong>
+            <span>Included with Coworking and Dedicated Desk memberships.</span>
+          </div>
+        </div>
+        <div class="am-b-item">
+          <div class="am-b-check"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5 6.5-7"/></svg></div>
+          <div class="am-b-item-text">
+            <strong>24/7 Keyless Access</strong>
+            <span>Come in at 3am if that's when you're most productive. No one's stopping you.</span>
+          </div>
+        </div>
+        <div class="am-b-item">
+          <div class="am-b-check"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5 6.5-7"/></svg></div>
+          <div class="am-b-item-text">
+            <strong>Printing + Secure Lockers</strong>
+            <span>Onsite printing and lockable storage for anything you need to leave behind.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="concept-wrapper" style="padding-bottom: 80px;">
+    <hr class="section-divider">
+    <div style="padding-top:40px; color: rgba(0,0,0,0.45); font-size:0.85rem;">
+      This file is for review only — no changes have been made to mockup.html.
+    </div>
+  </div>
+
+</body>
+</html>

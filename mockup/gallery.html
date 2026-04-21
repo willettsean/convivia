@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Convivia Work</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #fe904d;
+      --orange-dark: #d6773d;
+      --dark: #2a2320;
+      --cream: #f5f0eb;
+      --black: #0c0c0c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-display { font-family: 'DM Serif Display', serif; }
+
+    /* ─── TOP BAR ─── */
+    .top-bar {
+      background: var(--dark);
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    .top-bar a {
+      color: var(--orange);
+      text-decoration: none;
+      margin-left: 8px;
+    }
+
+    /* ─── HEADER / NAV ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .nav-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+    .nav-logo { display: block; flex-shrink: 0; }
+    .nav-logo svg { height: 60px; width: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(0,0,0,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--black); }
+    .nav-links a.active { color: var(--black); font-weight: 700; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 0.85rem;
+    }
+    .btn-primary:hover { background: var(--orange-dark); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--black);
+      transition: all 0.3s;
+      border-radius: 2px;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 16px 24px 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      flex-direction: column;
+      gap: 16px;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      background: var(--dark);
+      padding: 72px 24px 64px;
+      text-align: center;
+    }
+    .page-hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .page-hero-headline {
+      font-size: 3.2rem;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .page-hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery-section {
+      background: #fff;
+      padding: 80px 24px 96px;
+    }
+    .gallery-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+    }
+    .gallery-subgroup-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.35);
+      margin: 56px 0 20px;
+    }
+    .gallery-subgroup-label:first-child { margin-top: 0; }
+    .gallery-grid {
+      columns: 3;
+      column-gap: 12px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      display: block;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      object-fit: cover;
+      break-inside: avoid;
+      transition: opacity 0.2s;
+    }
+    .gallery-grid img:hover { opacity: 0.88; cursor: zoom-in; }
+    .gallery-studio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .gallery-studio-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .gallery-studio-grid img:hover { opacity: 0.88; cursor: zoom-in; }
+
+    /* ─── AV STUDIO FEATURE ─── */
+    .studio-feature {
+      background: var(--dark);
+      padding: 80px 24px 96px;
+      margin-top: 0;
+    }
+    .studio-feature-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+    }
+    .studio-feature-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .studio-feature-headline {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 16px;
+      max-width: 640px;
+    }
+    .studio-feature-sub {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.6);
+      max-width: 560px;
+      margin-bottom: 36px;
+    }
+    .studio-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 56px;
+    }
+    .studio-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+    }
+    .studio-chip svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--orange);
+      flex-shrink: 0;
+    }
+    .studio-grid-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 12px;
+    }
+    .studio-grid-layout .studio-img-main {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+    }
+    .studio-grid-layout .studio-img-secondary {
+      grid-column: 2 / 3;
+    }
+    .studio-grid-layout img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .studio-grid-layout .studio-img-main img {
+      aspect-ratio: 3/4;
+    }
+    .studio-grid-layout .studio-img-secondary img {
+      aspect-ratio: 4/3;
+    }
+    .studio-grid-layout img:hover { opacity: 0.9; cursor: zoom-in; }
+    .studio-book-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 48px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      flex-wrap: wrap;
+    }
+    .studio-book-text {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .studio-book-text strong {
+      display: block;
+      font-size: 1.25rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .btn-orange {
+      background: var(--orange);
+      color: #fff;
+      padding: 13px 28px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .btn-orange:hover { background: var(--orange-dark); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 36px 24px;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px 24px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .footer-inner a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-inner a:hover { color: #fff; }
+    .footer-brand { font-weight: 600; color: #fff; }
+    .footer-sep {
+      display: inline-block;
+      width: 1px;
+      height: 16px;
+      background: rgba(255,255,255,0.2);
+      vertical-align: middle;
+    }
+
+    /* ─── LIGHTBOX ─── */
+    .lb-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.93);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lb-overlay.open { display: flex; }
+    .lb-overlay img {
+      max-width: 88vw;
+      max-height: 86vh;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+      user-select: none;
+    }
+    .lb-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: #fff;
+      font-size: 1.8rem;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 1001;
+      line-height: 1;
+    }
+    .lb-btn:hover { background: rgba(255,255,255,0.24); }
+    .lb-prev { left: 16px; }
+    .lb-next { right: 16px; }
+    .lb-close {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: #fff;
+      font-size: 1.3rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 1001;
+    }
+    .lb-close:hover { background: rgba(255,255,255,0.22); }
+    .lb-counter {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.82rem;
+      font-family: 'Inter', sans-serif;
+      z-index: 1001;
+    }
+    .gallery-grid img, .gallery-studio-grid img { cursor: zoom-in; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .gallery-grid { columns: 2; }
+      .studio-grid-layout { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-hero-headline { font-size: 2.2rem; }
+      .studio-grid-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .studio-grid-layout .studio-img-main { grid-column: 1; grid-row: auto; }
+      .studio-grid-layout .studio-img-main img { aspect-ratio: 4/3; }
+      .studio-grid-layout .studio-img-secondary { grid-column: 1; grid-row: auto; }
+      .studio-book-strip { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 500px) {
+      .gallery-grid { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    1485 Treat Blvd, Walnut Creek, CA 94597 &nbsp;·&nbsp; Walkable to Pleasant Hill BART
+    <a href="https://maps.google.com/?q=1485+Treat+Blvd+Walnut+Creek+CA+94597" target="_blank">Get Directions ↗</a>
+  </div>
+
+  <header>
+    <div class="nav-inner">
+      <a href="mockup.html" class="nav-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 3171.4285714285716 1515.9321564732495"
+          role="img" aria-label="Convivia Work">
+          <g transform="scale(8.571428571428571) translate(10, 10)">
+            <g id="icon" transform="matrix(0.5079049078437439,0,0,0.5079049078437439,86.65857346743874,-57.9422849426956)" fill="#ffbc59"><g xmlns="http://www.w3.org/2000/svg"><path d="M175 135.96c7.2 0 13.23 4.79 15.69 11.39q.87 2.35.84 9.22-.05 9.14-.06 18.16 0 9.02.03 18.17.02 6.86-.86 9.21c-2.47 6.6-8.5 11.37-15.71 11.37-7.21-.01-13.23-4.79-15.7-11.4q-.87-2.35-.84-9.21.05-9.14.06-18.17.01-9.02-.03-18.16-.02-6.86.86-9.22c2.47-6.59 8.51-11.37 15.72-11.36M92.33 145.83c9.72.02 16.39 7.41 16.56 16.87q.15 8.78.15 12.07-.01 3.28-.21 12.07c-.22 9.45-6.92 16.81-16.64 16.79-9.72-.03-16.39-7.42-16.56-16.88q-.15-8.78-.14-12.07.01-3.28.2-12.07c.22-9.45 6.93-16.81 16.64-16.78" fill="#d6773d"></path></g><g xmlns="http://www.w3.org/2000/svg"><rect width="33.38" height="120.84" x="-16.69" y="-60.42" rx="16.22" transform="rotate(-.1 100064.989 -76333.826)" fill="#FE904D"></rect><rect width="33.02" height="57.08" x="-16.51" y="-28.54" rx="15.59" transform="rotate(-.1 100276.123 -147569.52)" fill="#FE904D"></rect></g><rect xmlns="http://www.w3.org/2000/svg" width="33.3" height="120.86" x="-16.65" y="-60.43" fill="#FFBC59" rx="16.17" transform="rotate(.1 -99918.726 124098.244)"></rect></g>
+            <g id="wordmark" transform="matrix(3.7321394010428466,0,0,3.7321394010428466,-2.313926001537106,59.204310667298735)" fill="#000000"><path d="M5.1 14.78 l2.08 0 l0 1.86 c0 2.24 -1.12 3.52 -3.28 3.52 s-3.28 -1.28 -3.28 -3.52 l0 -7.28 c0 -2.24 1.12 -3.52 3.28 -3.52 s3.28 1.28 3.28 3.52 l0 1.36 l-2.08 0 l0 -1.5 c0 -1 -0.44 -1.38 -1.14 -1.38 s-1.14 0.38 -1.14 1.38 l0 7.56 c0 1 0.44 1.36 1.14 1.36 s1.14 -0.36 1.14 -1.36 l0 -2 z M10.54 9.22 l0 7.56 c0 1 0.44 1.38 1.14 1.38 s1.14 -0.38 1.14 -1.38 l0 -7.56 c0 -1 -0.44 -1.38 -1.14 -1.38 s-1.14 0.38 -1.14 1.38 z M8.34 16.64 l0 -7.28 c0 -2.24 1.18 -3.52 3.34 -3.52 s3.34 1.28 3.34 3.52 l0 7.28 c0 2.24 -1.18 3.52 -3.34 3.52 s-3.34 -1.28 -3.34 -3.52 z M21.14 20 l-2.7 -10.14 l-0.04 0 l0 10.14 l-1.98 0 l0 -14 l2.76 0 l2.22 8.38 l0.04 0 l0 -8.38 l1.96 0 l0 14 l-2.26 0 z M26.62 6 l1.66 11.42 l0.04 0 l1.66 -11.42 l2.02 0 l-2.16 14 l-3.28 0 l-2.16 -14 l2.22 0 z M33.02 20 l0 -14 l2.2 0 l0 14 l-2.2 0 z M38.46 6 l1.66 11.42 l0.04 0 l1.66 -11.42 l2.02 0 l-2.16 14 l-3.28 0 l-2.16 -14 l2.22 0 z M44.86 20 l0 -14 l2.2 0 l0 14 l-2.2 0 z M53.54 6 l2.24 14 l-2.22 0 l-0.38 -2.54 l-2.7 0 l-0.38 2.54 l-2.02 0 l2.24 -14 l3.22 0 z M51.8 8.48 l-1.04 7.08 l2.12 0 l-1.04 -7.08 l-0.04 0 z M65.58 20 l-0.78 -7.46 l-0.04 0 l-0.78 7.46 l-3.02 0 l-1.56 -14 l2.14 0 l1.16 11.04 l0.04 0 l1.04 -11.04 l2.12 0 l1.08 11.12 l0.04 0 l1.12 -11.12 l1.92 0 l-1.56 14 l-2.92 0 z M73.18 9.22 l0 7.56 c0 1 0.44 1.38 1.14 1.38 s1.14 -0.38 1.14 -1.38 l0 -7.56 c0 -1 -0.44 -1.38 -1.14 -1.38 s-1.14 0.38 -1.14 1.38 z M70.98 16.64 l0 -7.28 c0 -2.24 1.18 -3.52 3.34 -3.52 s3.34 1.28 3.34 3.52 l0 7.28 c0 2.24 -1.18 3.52 -3.34 3.52 s-3.34 -1.28 -3.34 -3.52 z M85.92 20 l-2.24 0 c-0.12 -0.36 -0.2 -0.58 -0.2 -1.72 l0 -2.2 c0 -1.3 -0.44 -1.78 -1.44 -1.78 l-0.76 0 l0 5.7 l-2.2 0 l0 -14 l3.32 0 c2.28 0 3.26 1.06 3.26 3.22 l0 1.1 c0 1.44 -0.46 2.36 -1.44 2.82 l0 0.04 c1.1 0.46 1.46 1.5 1.46 2.96 l0 2.16 c0 0.68 0.02 1.18 0.24 1.7 z M82.34 8 l-1.06 0 l0 4.3 l0.86 0 c0.82 0 1.32 -0.36 1.32 -1.48 l0 -1.38 c0 -1 -0.34 -1.44 -1.12 -1.44 z M92.14 20 l-2.14 -5.58 l-0.68 1.28 l0 4.3 l-2.2 0 l0 -14 l2.2 0 l0 6.06 l0.04 0 l2.84 -6.06 l2.2 0 l-3.06 6.24 l3.06 7.76 l-2.26 0 z"></path></g>
+          </g>
+        </svg>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="mockup.html#workspace">Workspace</a></li>
+        <li><a href="mockup.html#conference-rooms">Conference Rooms</a></li>
+        <li><a href="av-studio.html">AV Studio</a></li>
+        <li><a href="memberships.html">Memberships</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+
+      <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn btn-primary">Book a Tour</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="mockup.html#workspace">Workspace</a>
+      <a href="mockup.html#conference-rooms">Conference Rooms</a>
+      <a href="av-studio.html">AV Studio</a>
+      <a href="memberships.html">Memberships</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="faq.html">FAQ</a>
+      <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn btn-primary">Book a Tour</a>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="page-hero">
+      <p class="page-hero-eyebrow">Gallery</p>
+      <h1 class="page-hero-headline font-display">Inside Convivia Work.</h1>
+      <p class="page-hero-sub">1485 Treat Blvd, Walnut Creek, CA</p>
+    </div>
+
+    <section class="gallery-section">
+      <div class="gallery-inner">
+
+        <p class="gallery-subgroup-label">Workspace</p>
+        <div class="gallery-grid">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-01.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-02.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-03.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-04.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-05.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-06.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-07.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-08.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-09.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-10.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-11.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-12.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-13.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-14.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-15.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-16.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-17.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-18.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-19.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-20.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fspace-21.jpg&w=1080&q=80" alt="Convivia workspace" loading="lazy">
+        </div>
+
+        <p class="gallery-subgroup-label">AV Production Studio</p>
+        <div class="gallery-studio-grid">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fstudio-01.jpg&w=1080&q=80" alt="AV Production Studio" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fstudio-02.jpg&w=1080&q=80" alt="AV Production Studio green screen" loading="lazy">
+          <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fstudio-03.jpg&w=1080&q=80" alt="AV Production Studio lighting" loading="lazy">
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-brand">© 2026 Convivia Work</span>
+      <span class="footer-sep"></span>
+      <span>1485 Treat Blvd, Walnut Creek, CA 94597</span>
+      <span class="footer-sep"></span>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lb-overlay" id="lb">
+    <button class="lb-close" id="lb-close" aria-label="Close">&#x2715;</button>
+    <button class="lb-btn lb-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+    <img id="lb-img" src="" alt="">
+    <button class="lb-btn lb-next" id="lb-next" aria-label="Next">&#8250;</button>
+    <div class="lb-counter" id="lb-counter"></div>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Lightbox — collect all gallery images in DOM order
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lb-img');
+    const lbClose = document.getElementById('lb-close');
+    const lbPrev = document.getElementById('lb-prev');
+    const lbNext = document.getElementById('lb-next');
+    const lbCounter = document.getElementById('lb-counter');
+
+    const galleryImgs = Array.from(document.querySelectorAll('.gallery-grid img, .gallery-studio-grid img'));
+    let lbIndex = 0;
+
+    function openLb(idx) {
+      lbIndex = idx;
+      lbImg.src = galleryImgs[lbIndex].src;
+      lbImg.alt = galleryImgs[lbIndex].alt;
+      lbCounter.textContent = (lbIndex + 1) + ' / ' + galleryImgs.length;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLb() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function lbStep(dir) {
+      lbIndex = (lbIndex + dir + galleryImgs.length) % galleryImgs.length;
+      lbImg.src = galleryImgs[lbIndex].src;
+      lbImg.alt = galleryImgs[lbIndex].alt;
+      lbCounter.textContent = (lbIndex + 1) + ' / ' + galleryImgs.length;
+    }
+
+    galleryImgs.forEach((img, i) => img.addEventListener('click', () => openLb(i)));
+    lbClose.addEventListener('click', closeLb);
+    lbPrev.addEventListener('click', () => lbStep(-1));
+    lbNext.addEventListener('click', () => lbStep(1));
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft') lbStep(-1);
+      if (e.key === 'ArrowRight') lbStep(1);
+    });
+  </script>
+
+</body>
+</html>

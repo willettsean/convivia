@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convivia Work — Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #fe904d;
+      --orange-dark: #d6773d;
+      --dark: #2a2320;
+      --cream: #f5f0eb;
+      --black: #0c0c0c;
+      --gray: rgba(0,0,0,0.7);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-display { font-family: 'DM Serif Display', serif; }
+
+    /* ─── TOP BAR ─── */
+    .top-bar {
+      background: var(--dark);
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    .top-bar a {
+      color: var(--orange);
+      text-decoration: none;
+      margin-left: 8px;
+    }
+
+    /* ─── HEADER / NAV ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+
+    .nav-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+
+    .nav-logo {
+      display: block;
+      flex-shrink: 0;
+    }
+    .nav-logo svg {
+      height: 60px;
+      width: auto;
+    }
+    .nav-logo-placeholder {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--black);
+    }
+    .nav-logo-placeholder span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(0,0,0,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--black); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 0.85rem;
+    }
+    .btn-primary:hover { background: var(--orange-dark); }
+    .btn-primary-lg {
+      background: var(--orange);
+      color: #fff;
+      padding: 14px 32px;
+      font-size: 0.95rem;
+    }
+    .btn-primary-lg:hover { background: var(--orange-dark); }
+    .btn-outline-white {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.7);
+      padding: 12px 30px;
+      font-size: 0.95rem;
+    }
+    .btn-outline-white:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #fff;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--black);
+      transition: all 0.3s;
+      border-radius: 2px;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 16px 24px 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 12px 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(0,0,0,0.7);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .mobile-menu a:hover { color: var(--black); }
+    .mobile-menu .btn-primary {
+      margin-top: 16px;
+      width: 100%;
+      padding: 14px;
+      font-size: 0.95rem;
+    }
+
+    /* ─── SECTION 1: HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.45) 0%,
+        rgba(0,0,0,0.55) 60%,
+        rgba(0,0,0,0.65) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      padding: 0 24px;
+      max-width: 800px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 20px;
+    }
+
+    .hero-headline {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 40px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── SECTION 2: ABOUT ─── */
+    .about {
+      background: #fff;
+      padding: 100px 24px;
+    }
+    .about-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: stretch;
+    }
+    .about-left {}
+    .about-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .about-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+    .about-body {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.65);
+      margin-bottom: 36px;
+    }
+
+    /* Video thumbnail box */
+    .video-thumb {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--dark);
+      aspect-ratio: 16/9;
+      margin-bottom: 28px;
+    }
+    .video-thumb video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+    }
+    .video-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .play-btn {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .play-btn:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
+    .play-btn svg { margin-left: 4px; }
+    .video-label {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ─── VIDEO MODAL ─── */
+    .video-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-modal-overlay.open { display: flex; }
+    .video-modal-inner {
+      position: relative;
+      width: 90vw;
+      max-width: 1100px;
+    }
+    .video-modal-inner video {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      display: block;
+      background: #000;
+    }
+    .video-modal-close {
+      position: absolute;
+      top: -44px;
+      right: 0;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: #fff;
+      font-size: 1.4rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .video-modal-close:hover { background: rgba(255,255,255,0.22); }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.93);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-img-wrap {
+      position: relative;
+      max-width: 92vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-overlay img {
+      max-width: 88vw;
+      max-height: 86vh;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+    }
+    .lightbox-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: #fff;
+      font-size: 1.6rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 1001;
+    }
+    .lightbox-btn:hover { background: rgba(255,255,255,0.24); }
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
+    .lightbox-close-btn {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: #fff;
+      font-size: 1.3rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 1001;
+    }
+    .lightbox-close-btn:hover { background: rgba(255,255,255,0.22); }
+
+    /* Rotating screenshots */
+    .about-right {
+      display: flex;
+      flex-direction: column;
+    }
+    .screenshots-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    .screenshots-grid img {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+    .gallery-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 2px solid var(--orange);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    .gallery-link:hover { color: var(--orange); }
+
+    /* ─── SECTION 3: LOCATION ─── */
+    .location {
+      background: var(--cream);
+      padding: 80px 24px;
+    }
+    .location-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .location-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .location-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+    .location-address {
+      font-weight: 500;
+      color: rgba(0,0,0,0.6);
+      margin-bottom: 24px;
+    }
+    .location-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .location-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: rgba(0,0,0,0.7);
+      font-size: 0.95rem;
+    }
+    .location-bullets li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .map-embed {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .map-embed iframe { display: block; }
+
+    /* ─── SECTION 4: STATS ─── */
+    .stats {
+      background: var(--dark);
+      color: #fff;
+      padding: 60px 24px;
+    }
+    .stats-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.4;
+    }
+
+    /* ─── SECTION 5: TECH-FIRST ─── */
+    .tech {
+      background: var(--dark);
+      padding: 96px 24px;
+    }
+    .tech-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+    }
+    .tech-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .tech-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .tech-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      color: #fff;
+      line-height: 1.1;
+    }
+    .tech-sub {
+      font-size: 0.97rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+      max-width: 400px;
+      flex-shrink: 0;
+    }
+    .tech-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 48px;
+    }
+    .tech-stat {
+      padding-right: 40px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .tech-stat:first-child { padding-left: 0; }
+    .tech-stat:last-child { border-right: none; padding-left: 40px; }
+    .tech-stat:nth-child(2),
+    .tech-stat:nth-child(3) { padding-left: 40px; }
+    .tech-stat-num {
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 8px;
+      font-family: 'Playfair Display', serif;
+    }
+    .tech-stat-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .tech-stat-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    /* ─── SECTION 6: AMENITIES ─── */
+    .amenities {
+      background: var(--cream);
+      padding: 96px 24px;
+    }
+    .amenities-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .amenities-left {}
+    .amenities-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .amenities-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      color: var(--black);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .amenities-body {
+      font-size: 0.97rem;
+      line-height: 1.75;
+      color: rgba(0,0,0,0.6);
+      margin-bottom: 36px;
+    }
+    .amenities-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark);
+      color: #fff;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .amenities-cta:hover { background: #3d3330; }
+    .amenities-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .amenity-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .amenity-item:first-child { padding-top: 0; }
+    .amenity-item:last-child { border-bottom: none; }
+    .amenity-check {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .amenity-check svg {
+      width: 14px;
+      height: 14px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .amenity-item-text strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .amenity-item-text span {
+      font-size: 0.85rem;
+      color: rgba(0,0,0,0.5);
+      line-height: 1.5;
+    }
+
+    /* ─── SECTION 7: MEMBERSHIPS ─── */
+    .memberships {
+      background: #fff;
+      padding: 100px 24px;
+    }
+    .memberships-inner { max-width: 1152px; margin: 0 auto; }
+    .memberships-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .memberships-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--black);
+      margin-bottom: 48px;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .plan-card {
+      background: var(--cream);
+      border-radius: 24px;
+      padding: 36px;
+      border: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+    .plan-card.featured {
+      background: var(--dark);
+      color: #fff;
+    }
+    .plan-tier {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.4);
+      margin-bottom: 8px;
+    }
+    .plan-card.featured .plan-tier { color: rgba(255,255,255,0.5); }
+    .plan-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+    .plan-card.featured .plan-name { color: #fff; }
+    .plan-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--black);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .plan-card.featured .plan-price { color: var(--orange); }
+    .plan-period {
+      font-size: 0.82rem;
+      color: rgba(0,0,0,0.4);
+      margin-bottom: 16px;
+    }
+    .plan-card.featured .plan-period { color: rgba(255,255,255,0.4); }
+    .plan-desc {
+      font-size: 0.9rem;
+      color: rgba(0,0,0,0.65);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .plan-card.featured .plan-desc { color: rgba(255,255,255,0.7); }
+    .plan-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+    .plan-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: rgba(0,0,0,0.7);
+    }
+    .plan-card.featured .plan-bullets li { color: rgba(255,255,255,0.75); }
+    .plan-bullets li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .plan-fit {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(0,0,0,0.45);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .plan-card.featured .plan-fit { color: rgba(255,255,255,0.4); }
+    .plan-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery-section {
+      background: #fff;
+      padding: 96px 24px;
+    }
+    .gallery-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+    }
+    .gallery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      gap: 16px;
+    }
+    .gallery-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .gallery-headline {
+      font-size: 2.2rem;
+      line-height: 1.15;
+      color: var(--black);
+      margin: 0;
+    }
+    .gallery-subgroup-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.35);
+      margin: 48px 0 16px;
+    }
+    .gallery-subgroup-label:first-of-type { margin-top: 0; }
+    .gallery-grid {
+      columns: 3;
+      column-gap: 12px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      display: block;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      object-fit: cover;
+      break-inside: avoid;
+      transition: opacity 0.2s;
+    }
+    .gallery-grid img:hover { opacity: 0.88; cursor: zoom-in; }
+    .gallery-studio-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .gallery-studio-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .gallery-studio-grid img:hover { opacity: 0.88; cursor: zoom-in; }
+    @media (max-width: 900px) {
+      .gallery-grid { columns: 2; }
+      .gallery-studio-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .gallery-grid { columns: 1; }
+      .gallery-studio-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials {
+      background: var(--cream);
+      padding: 100px 24px;
+    }
+    .testimonials-inner { max-width: 1152px; margin: 0 auto; }
+    .testimonials-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .testimonials-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--black);
+      margin-bottom: 48px;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 36px;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .testimonial-stars {
+      display: flex;
+      gap: 4px;
+    }
+    .testimonial-stars span {
+      color: var(--orange);
+      font-size: 1rem;
+    }
+    .testimonial-quote {
+      font-size: 1rem;
+      line-height: 1.65;
+      color: rgba(0,0,0,0.7);
+      font-style: italic;
+      flex: 1;
+    }
+    .testimonial-placeholder {
+      background: rgba(0,0,0,0.05);
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(0,0,0,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 2px solid rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .author-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--black);
+    }
+    .author-title {
+      font-size: 0.78rem;
+      color: rgba(0,0,0,0.4);
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      background: var(--dark);
+      padding: 100px 24px;
+      text-align: center;
+      color: #fff;
+    }
+    .cta-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .cta-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+    .cta-body {
+      color: rgba(255,255,255,0.65);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── FAQ ─── */
+    .faq-section {
+      background: #fff;
+      padding: 96px 24px;
+    }
+    .faq-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .faq-headline {
+      font-size: 2.2rem;
+      line-height: 1.15;
+      color: var(--black);
+      margin-bottom: 48px;
+    }
+    .faq-subhead {
+      font-size: 0.95rem;
+      color: rgba(0,0,0,0.55);
+      margin-bottom: 52px;
+    }
+    .faq-subhead a {
+      color: var(--orange);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .faq-subhead a:hover { text-decoration: underline; }
+    .faq-group {
+      margin-bottom: 12px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.07);
+    }
+    .faq-section-label {
+      font-size: 1.1rem;
+      color: var(--black);
+      margin: 0;
+      padding: 18px 24px;
+      background: var(--cream);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      letter-spacing: 0.01em;
+    }
+    .faq-list {
+      border-top: none;
+      background: #fff;
+      padding: 0 24px;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
+      text-align: left;
+    }
+    .faq-question:hover { color: var(--orange); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid rgba(0,0,0,0.15);
+      position: relative;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .faq-icon::before,
+    .faq-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--black);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .faq-icon::before { width: 10px; height: 2px; top: 9px; left: 5px; }
+    .faq-icon::after  { width: 2px; height: 10px; top: 5px; left: 9px; }
+    .faq-item.open .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+    .faq-item.open .faq-icon { border-color: var(--orange); background: var(--orange); }
+    .faq-item.open .faq-icon::before,
+    .faq-item.open .faq-icon::after { background: #fff; }
+    .faq-answer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s ease, padding 0.25s ease;
+    }
+    .faq-answer p {
+      padding-bottom: 22px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.6);
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 36px 24px;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px 24px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .footer-inner a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-inner a:hover { color: rgba(255,255,255,0.9); }
+    .footer-sep {
+      width: 1px;
+      height: 14px;
+      background: rgba(255,255,255,0.15);
+    }
+    .footer-brand { color: #fff; font-weight: 600; }
+
+    /* ─── CONFERENCE ROOMS (separate section below for reference) ─── */
+    .conf-section {
+      background: #fff;
+      padding: 100px 24px;
+    }
+    .conf-inner { max-width: 1152px; margin: 0 auto; }
+    .conf-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .conf-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    .conf-intro {
+      max-width: 700px;
+      color: rgba(0,0,0,0.65);
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+    .conf-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .conf-card {
+      background: var(--cream);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .conf-card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+    }
+    .conf-card-body { padding: 28px; }
+    .conf-card-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.4);
+      margin-bottom: 6px;
+    }
+    .conf-card-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+    .conf-card-desc {
+      font-size: 0.9rem;
+      color: rgba(0,0,0,0.65);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .conf-card-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .conf-card-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: rgba(0,0,0,0.65);
+    }
+    .conf-card-bullets li::before {
+      content: '•';
+      color: var(--orange);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .about-inner,
+      .location-inner,
+      .tech-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .amenities-grid,
+      .plans-grid,
+      .conf-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      header { position: sticky; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .hero-headline { font-size: 2.4rem; }
+      .plans-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR: Address strip above nav -->
+  <div class="top-bar">
+    1485 Treat Blvd, Walnut Creek, CA 94597 &nbsp;·&nbsp; Walkable to Pleasant Hill BART
+    <a href="https://maps.google.com/?q=1485+Treat+Blvd+Walnut+Creek+CA+94597" target="_blank">Get Directions ↗</a>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-inner">
+      <!-- Logo -->
+      <a href="mockup.html" class="nav-logo">
+        <!-- Inline SVG cropped to wordmark only (no subtext) -->
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 3171.4285714285716 1515.9321564732495"
+          role="img" aria-label="Convivia Work">
+          <g transform="scale(8.571428571428571) translate(10, 10)">
+            <g id="icon" transform="matrix(0.5079049078437439,0,0,0.5079049078437439,86.65857346743874,-57.9422849426956)" fill="#ffbc59"><g xmlns="http://www.w3.org/2000/svg"><path d="M175 135.96c7.2 0 13.23 4.79 15.69 11.39q.87 2.35.84 9.22-.05 9.14-.06 18.16 0 9.02.03 18.17.02 6.86-.86 9.21c-2.47 6.6-8.5 11.37-15.71 11.37-7.21-.01-13.23-4.79-15.7-11.4q-.87-2.35-.84-9.21.05-9.14.06-18.17.01-9.02-.03-18.16-.02-6.86.86-9.22c2.47-6.59 8.51-11.37 15.72-11.36M92.33 145.83c9.72.02 16.39 7.41 16.56 16.87q.15 8.78.15 12.07-.01 3.28-.21 12.07c-.22 9.45-6.92 16.81-16.64 16.79-9.72-.03-16.39-7.42-16.56-16.88q-.15-8.78-.14-12.07.01-3.28.2-12.07c.22-9.45 6.93-16.81 16.64-16.78" fill="#d6773d"></path></g><g xmlns="http://www.w3.org/2000/svg"><rect width="33.38" height="120.84" x="-16.69" y="-60.42" rx="16.22" transform="rotate(-.1 100064.989 -76333.826)" fill="#FE904D"></rect><rect width="33.02" height="57.08" x="-16.51" y="-28.54" rx="15.59" transform="rotate(-.1 100276.123 -147569.52)" fill="#FE904D"></rect></g><rect xmlns="http://www.w3.org/2000/svg" width="33.3" height="120.86" x="-16.65" y="-60.43" fill="#FFBC59" rx="16.17" transform="rotate(.1 -99918.726 124098.244)"></rect></g>
+            <g id="wordmark" transform="matrix(3.7321394010428466,0,0,3.7321394010428466,-2.313926001537106,59.204310667298735)" fill="#000000"><path d="M5.1 14.78 l2.08 0 l0 1.86 c0 2.24 -1.12 3.52 -3.28 3.52 s-3.28 -1.28 -3.28 -3.52 l0 -7.28 c0 -2.24 1.12 -3.52 3.28 -3.52 s3.28 1.28 3.28 3.52 l0 1.36 l-2.08 0 l0 -1.5 c0 -1 -0.44 -1.38 -1.14 -1.38 s-1.14 0.38 -1.14 1.38 l0 7.56 c0 1 0.44 1.36 1.14 1.36 s1.14 -0.36 1.14 -1.36 l0 -2 z M10.54 9.22 l0 7.56 c0 1 0.44 1.38 1.14 1.38 s1.14 -0.38 1.14 -1.38 l0 -7.56 c0 -1 -0.44 -1.38 -1.14 -1.38 s-1.14 0.38 -1.14 1.38 z M8.34 16.64 l0 -7.28 c0 -2.24 1.18 -3.52 3.34 -3.52 s3.34 1.28 3.34 3.52 l0 7.28 c0 2.24 -1.18 3.52 -3.34 3.52 s-3.34 -1.28 -3.34 -3.52 z M21.14 20 l-2.7 -10.14 l-0.04 0 l0 10.14 l-1.98 0 l0 -14 l2.76 0 l2.22 8.38 l0.04 0 l0 -8.38 l1.96 0 l0 14 l-2.26 0 z M26.62 6 l1.66 11.42 l0.04 0 l1.66 -11.42 l2.02 0 l-2.16 14 l-3.28 0 l-2.16 -14 l2.22 0 z M33.02 20 l0 -14 l2.2 0 l0 14 l-2.2 0 z M38.46 6 l1.66 11.42 l0.04 0 l1.66 -11.42 l2.02 0 l-2.16 14 l-3.28 0 l-2.16 -14 l2.22 0 z M44.86 20 l0 -14 l2.2 0 l0 14 l-2.2 0 z M53.54 6 l2.24 14 l-2.22 0 l-0.38 -2.54 l-2.7 0 l-0.38 2.54 l-2.02 0 l2.24 -14 l3.22 0 z M51.8 8.48 l-1.04 7.08 l2.12 0 l-1.04 -7.08 l-0.04 0 z M65.58 20 l-0.78 -7.46 l-0.04 0 l-0.78 7.46 l-3.02 0 l-1.56 -14 l2.14 0 l1.16 11.04 l0.04 0 l1.04 -11.04 l2.12 0 l1.08 11.12 l0.04 0 l1.12 -11.12 l1.92 0 l-1.56 14 l-2.92 0 z M73.18 9.22 l0 7.56 c0 1 0.44 1.38 1.14 1.38 s1.14 -0.38 1.14 -1.38 l0 -7.56 c0 -1 -0.44 -1.38 -1.14 -1.38 s-1.14 0.38 -1.14 1.38 z M70.98 16.64 l0 -7.28 c0 -2.24 1.18 -3.52 3.34 -3.52 s3.34 1.28 3.34 3.52 l0 7.28 c0 2.24 -1.18 3.52 -3.34 3.52 s-3.34 -1.28 -3.34 -3.52 z M85.92 20 l-2.24 0 c-0.12 -0.36 -0.2 -0.58 -0.2 -1.72 l0 -2.2 c0 -1.3 -0.44 -1.78 -1.44 -1.78 l-0.76 0 l0 5.7 l-2.2 0 l0 -14 l3.32 0 c2.28 0 3.26 1.06 3.26 3.22 l0 1.1 c0 1.44 -0.46 2.36 -1.44 2.82 l0 0.04 c1.1 0.46 1.46 1.5 1.46 2.96 l0 2.16 c0 0.68 0.02 1.18 0.24 1.7 z M82.34 8 l-1.06 0 l0 4.3 l0.86 0 c0.82 0 1.32 -0.36 1.32 -1.48 l0 -1.38 c0 -1 -0.34 -1.44 -1.12 -1.44 z M92.14 20 l-2.14 -5.58 l-0.68 1.28 l0 4.3 l-2.2 0 l0 -14 l2.2 0 l0 6.06 l0.04 0 l2.84 -6.06 l2.2 0 l-3.06 6.24 l3.06 7.76 l-2.26 0 z"></path></g>
+          </g>
+        </svg>
+      </a>
+
+      <!-- Desktop Nav -->
+      <ul class="nav-links">
+        <li><a href="#workspace">Workspace</a></li>
+        <li><a href="conference-rooms.html">Conference Rooms</a></li>
+        <li><a href="av-studio.html">AV Studio</a></li>
+        <li><a href="memberships.html">Memberships</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+
+      <!-- Desktop CTA -->
+      <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn btn-primary" style="display:none" id="desktop-cta">Book a Tour</a>
+
+      <!-- Hamburger (mobile) -->
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn btn-primary" id="nav-cta">Book a Tour</a>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#workspace">Workspace</a>
+      <a href="conference-rooms.html">Conference Rooms</a>
+      <a href="av-studio.html">AV Studio</a>
+      <a href="memberships.html">Memberships</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="faq.html">FAQ</a>
+      <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn btn-primary">Book a Tour</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ─── SECTION 1: HERO ─── -->
+    <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="https://sbierwith-cloud.github.io/Mirago/hero-bg.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Create • Connect • CoWork</p>
+        <h1 class="hero-headline font-display">A Tech-Forward<br>Coworking Space</h1>
+        <p class="hero-sub">For Founders, Creatives, and Power Builders</p>
+        <div class="hero-buttons">
+          <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn btn-primary-lg">Book a Tour</a>
+          <a href="memberships.html" class="btn btn-outline-white">View Memberships</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SECTION 2: ABOUT ─── -->
+    <section class="about" id="workspace">
+      <div class="about-inner">
+
+        <!-- Left: copy + video thumbnail -->
+        <div class="about-left">
+          <p class="about-eyebrow">Walnut Creek, California</p>
+          <h2 class="about-headline font-display">A workspace built for momentum.</h2>
+          <p class="about-body">
+            Convivia Work is a technology-first workspace in Walnut Creek. Natural light collaboration areas, glare-free focus zones, and fully instrumented conference rooms create momentum for the people who build things.
+          </p>
+
+          <!-- Clickable video box -->
+          <div class="video-thumb" id="video-thumb-trigger">
+            <video muted loop playsinline id="about-video-bg">
+              <source src="https://sbierwith-cloud.github.io/Mirago/hero-bg.mp4" type="video/mp4">
+            </video>
+            <div class="video-thumb-overlay">
+              <div class="play-btn">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <span class="video-label">Watch Office Overview</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: rotating screenshots + gallery link -->
+        <div class="about-right">
+          <p class="screenshots-label">Inside Convivia</p>
+          <div class="screenshots-grid" id="screenshots-grid">
+            <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Foffice%2Foffice-01.jpg&w=640&q=75" alt="Convivia workspace" id="shot-0">
+            <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Foffice%2Foffice-02.jpg&w=640&q=75" alt="Convivia workspace" id="shot-1">
+            <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Foffice%2Foffice-03.jpg&w=640&q=75" alt="Convivia workspace" id="shot-2">
+            <img src="https://conviviawork.com/_next/image?url=%2Fassets%2Foffice%2Foffice-04.jpg&w=640&q=75" alt="Convivia workspace" id="shot-3">
+          </div>
+          <a href="gallery.html" class="gallery-link">View the Full Gallery →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── SECTION 3: LOCATION ─── -->
+    <section class="location">
+      <div class="location-inner">
+        <div>
+          <p class="location-eyebrow">Location</p>
+          <h2 class="location-headline font-display">Find us in Walnut Creek</h2>
+          <p class="location-address">1485 Treat Blvd. Walnut Creek, CA 94597</p>
+          <ul class="location-bullets">
+            <li>Super convenient location</li>
+            <li>Walkable to Pleasant Hill BART</li>
+            <li>0.5 miles to Hwy 680</li>
+            <li>Across the street from The Bay Club Walnut Creek</li>
+          </ul>
+          <a href="https://maps.google.com/?q=1485+Treat+Blvd+Walnut+Creek+CA+94597" target="_blank" class="btn btn-primary">Open in Google Maps ↗</a>
+        </div>
+        <div class="map-embed">
+          <iframe
+            title="Convivia Work location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3150.123456789!2d-122.0651!3d37.9101!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80857b8c5f1234ab%3A0x123456789abcdef!2s1485+Treat+Blvd%2C+Walnut+Creek%2C+CA+94597!5e0!3m2!1sen!2sus!4v1711000000000!5m2!1sen!2sus"
+            width="100%" height="380" style="border:0"
+            allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SECTION 5: TECH-FIRST ─── -->
+    <section class="tech" id="technology">
+      <div class="tech-inner">
+        <div class="tech-top">
+          <div>
+            <p class="tech-eyebrow">Infrastructure</p>
+            <h2 class="tech-headline font-display">Built for people who can't afford slow.</h2>
+          </div>
+          <p class="tech-sub">Multigigabit internet. 5G failover. 4K conferencing. A production studio. Smart access. This isn't a nice-to-have list — it's the baseline we built the whole space around.</p>
+        </div>
+        <div class="tech-stats">
+          <div class="tech-stat">
+            <div class="tech-stat-num" style="font-size: clamp(1.6rem, 2.8vw, 2.4rem); letter-spacing: -0.02em;">Multi<wbr>gigabit</div>
+            <div class="tech-stat-label">Internet + 5G Failover</div>
+            <div class="tech-stat-sub">Redundant mesh WiFi across the whole space — 5G kicks in automatically if the primary line drops</div>
+          </div>
+          <div class="tech-stat">
+            <div class="tech-stat-num">4K</div>
+            <div class="tech-stat-label">Conference Rooms</div>
+            <div class="tech-stat-sub">4 rooms, 4K displays, plug-and-play video — ready in 10 seconds</div>
+          </div>
+          <div class="tech-stat">
+            <div class="tech-stat-num">24/7</div>
+            <div class="tech-stat-label">Keyless Access</div>
+            <div class="tech-stat-sub">Mobile app entry, smart booking, and billing — all in one place</div>
+          </div>
+          <div class="tech-stat">
+            <div class="tech-stat-num">1</div>
+            <div class="tech-stat-label">Pro AV Studio</div>
+            <div class="tech-stat-sub">Green screen, cinema lights, acoustic dampening — bookable by members</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SECTION 6: AMENITIES ─── -->
+    <section class="amenities" id="amenities">
+      <div class="amenities-inner">
+        <div class="amenities-left">
+          <p class="amenities-eyebrow">Amenities</p>
+          <h2 class="amenities-headline font-display">Nothing missing. Nothing extra to pay for.</h2>
+          <p class="amenities-body">Most coworking spaces charge extra for the things that should just be there. At Convivia, the essentials are always included, so your headspace is free for the work that matters.</p>
+          <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="amenities-cta">
+            Book a Tour
+            <svg width="14" height="14" stroke="#fff" fill="none" stroke-width="2" viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+        <div class="amenities-right">
+          <div class="amenity-item">
+            <div class="amenity-check"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5 6.5-7"/></svg></div>
+            <div class="amenity-item-text">
+              <strong>Multigigabit WiFi + 5G Failover</strong>
+              <span>The fastest internet in any coworking space in the East Bay.</span>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-check"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5 6.5-7"/></svg></div>
+            <div class="amenity-item-text">
+              <strong>Glare-Free Standing Desks + Monitors</strong>
+              <span>Adjustable sit/stand desks with external monitors at every station.</span>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-check"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5 6.5-7"/></svg></div>
+            <div class="amenity-item-text">
+              <strong>Coffee + Full Kitchen</strong>
+              <span>Good coffee, a real kitchen, and space to take a real break.</span>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-check"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5 6.5-7"/></svg></div>
+            <div class="amenity-item-text">
+              <strong>Phone Booths + Quiet Zones</strong>
+              <span>Private call booths and heads-down areas when you need to go dark.</span>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-check"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5 6.5-7"/></svg></div>
+            <div class="amenity-item-text">
+              <strong>24/7 Keyless Access</strong>
+              <span>Come in at 3am if that's when you're most productive. No one's stopping you.</span>
+            </div>
+          </div>
+          <div class="amenity-item">
+            <div class="amenity-check"><svg viewBox="0 0 16 16"><path d="M3 8l3.5 3.5 6.5-7"/></svg></div>
+            <div class="amenity-item-text">
+              <strong>Printing + Secure Lockers</strong>
+              <span>Onsite printing and lockable storage for anything you need to leave behind.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SECTION 7: MEMBERSHIPS ─── -->
+    <section class="memberships" id="memberships">
+      <div class="memberships-inner">
+        <p class="memberships-eyebrow">Memberships</p>
+        <h2 class="memberships-headline font-display">Choose how you plug into Convivia Work.</h2>
+        <div class="plans-grid">
+
+          <!-- Day Pass -->
+          <div class="plan-card">
+            <div class="plan-tier">Day Pass</div>
+            <div class="plan-name">Day Pass</div>
+            <div class="plan-price font-display">$50</div>
+            <div class="plan-period">per day</div>
+            <p class="plan-desc">Drop in for a focused workday and sample the Convivia energy.</p>
+            <ul class="plan-bullets">
+              <li>Adjustable standing desk + ergonomic seating</li>
+              <li>External monitor, laptop stand, power &amp; fast WiFi</li>
+              <li>Kitchen and coffee program access</li>
+              <li>Phone booths + quiet zones</li>
+            </ul>
+            <p class="plan-fit">Perfect for visiting founders, fractional teams, and trial runs.</p>
+            <div class="plan-actions">
+              <a href="https://conviviawork.coworksapp.com/day-pass-signup/716?plan=11611" target="_blank" class="btn btn-primary" style="font-size:0.82rem; padding:10px 18px">Sign Up</a>
+            </div>
+          </div>
+
+          <!-- Coworking Membership -->
+          <div class="plan-card featured">
+            <div class="plan-tier">Most Popular</div>
+            <div class="plan-name">Coworking Membership</div>
+            <div class="plan-price font-display">$382</div>
+            <div class="plan-period">per month</div>
+            <p class="plan-desc">Everything in the Day Pass plus full-time momentum.</p>
+            <ul class="plan-bullets">
+              <li>24/7 access with smart entry</li>
+              <li>Conference room credits in your membership app</li>
+              <li>Priority invites to founder salons + community events</li>
+              <li>Flexible seating across focus zones and lounges</li>
+            </ul>
+            <p class="plan-fit">Your baseline for being part of the Convivia builder community.</p>
+            <div class="plan-actions">
+              <a href="https://conviviawork.coworksapp.com/membership-signup/11506" target="_blank" class="btn btn-primary" style="font-size:0.82rem; padding:10px 18px">Sign Up</a>
+            </div>
+          </div>
+
+          <!-- Dedicated Desk -->
+          <div class="plan-card">
+            <div class="plan-tier">Dedicated Desk</div>
+            <div class="plan-name">Dedicated Desk Membership</div>
+            <div class="plan-price font-display">$450</div>
+            <div class="plan-period">per month</div>
+            <p class="plan-desc">The Coworking Membership plus a desk you can truly make your own.</p>
+            <ul class="plan-bullets">
+              <li>Select and personalize your workstation</li>
+              <li>Lockable storage cabinet + mail service</li>
+              <li>Additional conference room credits</li>
+              <li>Keep gear, monitors, and peripherals in place</li>
+            </ul>
+            <p class="plan-fit">Ideal for creators who want permanence without sacrificing community.</p>
+            <div class="plan-actions">
+              <a href="https://conviviawork.coworksapp.com/membership-signup/11777" target="_blank" class="btn btn-primary" style="font-size:0.82rem; padding:10px 18px">Sign Up</a>
+            </div>
+          </div>
+
+          <!-- Team Suite -->
+          <div class="plan-card">
+            <div class="plan-tier">Team</div>
+            <div class="plan-name">Custom Team Suite</div>
+            <div class="plan-price font-display" style="font-size:2.2rem">Custom</div>
+            <div class="plan-period">per team</div>
+            <p class="plan-desc">Private studios for teams of 2–12 with full access to the shared ecosystem.</p>
+            <ul class="plan-bullets">
+              <li>Dedicated office with natural light + private storage</li>
+              <li>Additional conference room allotments</li>
+              <li>Closed-door focus plus open coworking access</li>
+              <li>Concierge support for IT, guests, and workshops</li>
+            </ul>
+            <p class="plan-fit">Scale-ups, agencies, and distributed teams get a branded home base.</p>
+            <div class="plan-actions">
+              <a href="https://conviviawork.coworksapp.com/membership-request/716" target="_blank" class="btn btn-primary" style="font-size:0.82rem; padding:10px 18px">Contact Team</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── TESTIMONIALS ─── -->
+    <section class="testimonials">
+      <div class="testimonials-inner">
+        <p class="testimonials-eyebrow">Member Stories</p>
+        <h2 class="testimonials-headline font-display">What coworkers are saying.</h2>
+        <div class="testimonials-grid">
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <div class="testimonial-placeholder">[Member Quote Here]</div>
+            <div class="testimonial-author">
+              <div class="author-avatar">👤</div>
+              <div>
+                <div class="author-name">[Member Name]</div>
+                <div class="author-title">[Title / Company]</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <div class="testimonial-placeholder">[Member Quote Here]</div>
+            <div class="testimonial-author">
+              <div class="author-avatar">👤</div>
+              <div>
+                <div class="author-name">[Member Name]</div>
+                <div class="author-title">[Title / Company]</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <div class="testimonial-placeholder">[Member Quote Here]</div>
+            <div class="testimonial-author">
+              <div class="author-avatar">👤</div>
+              <div>
+                <div class="author-name">[Member Name]</div>
+                <div class="author-title">[Title / Company]</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CTA BANNER ─── -->
+    <section class="cta-banner" id="book">
+      <p class="cta-eyebrow">Tours open now</p>
+      <h2 class="cta-headline font-display">See the space IRL.</h2>
+      <p class="cta-body">Walk through Convivia Work, test the network, and grab a coffee with our community team.</p>
+      <div class="cta-buttons">
+        <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn btn-primary-lg">Book a Tour</a>
+        <a href="https://conviviawork.coworksapp.com/membership-request/716" target="_blank" class="btn btn-outline-white">Contact Team</a>
+      </div>
+    </section>
+
+    <!-- FAQ → faq.html -->
+
+  </main>
+
+  <!-- Video Modal -->
+  <div class="video-modal-overlay" id="video-modal">
+    <div class="video-modal-inner">
+      <button class="video-modal-close" id="video-modal-close" aria-label="Close video">&#x2715;</button>
+      <video id="modal-video" controls playsinline>
+        <source src="https://sbierwith-cloud.github.io/Mirago/hero-bg.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+
+  <!-- Lightbox (homepage rotating photos) -->
+  <div class="lightbox-overlay" id="hp-lightbox">
+    <button class="lightbox-close-btn" id="hp-lb-close" aria-label="Close">&#x2715;</button>
+    <button class="lightbox-btn lightbox-prev" id="hp-lb-prev" aria-label="Previous">&#8249;</button>
+    <img id="hp-lb-img" src="" alt="">
+    <button class="lightbox-btn lightbox-next" id="hp-lb-next" aria-label="Next">&#8250;</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-brand">© 2026 Convivia Work</span>
+      <span class="footer-sep"></span>
+      <span>1485 Treat Blvd, Walnut Creek, CA 94597</span>
+      <span class="footer-sep"></span>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <span class="footer-sep"></span>
+      <button style="color:rgba(255,255,255,0.55); background:none; border:none; cursor:pointer; font-size:0.82rem; font-family:inherit;">Manage Cookies</button>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Video modal
+    const videoModal = document.getElementById('video-modal');
+    const modalVideo = document.getElementById('modal-video');
+    const videoModalClose = document.getElementById('video-modal-close');
+    const videoThumbTrigger = document.getElementById('video-thumb-trigger');
+
+    if (videoThumbTrigger) {
+      videoThumbTrigger.addEventListener('click', () => {
+        videoModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        modalVideo.play();
+      });
+    }
+    function closeVideoModal() {
+      videoModal.classList.remove('open');
+      document.body.style.overflow = '';
+      modalVideo.pause();
+      modalVideo.currentTime = 0;
+    }
+    videoModalClose.addEventListener('click', closeVideoModal);
+    videoModal.addEventListener('click', e => { if (e.target === videoModal) closeVideoModal(); });
+
+    // Homepage photo lightbox
+    const hpLightbox = document.getElementById('hp-lightbox');
+    const hpLbImg = document.getElementById('hp-lb-img');
+    const hpLbClose = document.getElementById('hp-lb-close');
+    const hpLbPrev = document.getElementById('hp-lb-prev');
+    const hpLbNext = document.getElementById('hp-lb-next');
+    const hpPhotos = [
+      'https://conviviawork.com/_next/image?url=%2Fassets%2Foffice%2Foffice-01.jpg&w=1080&q=80',
+      'https://conviviawork.com/_next/image?url=%2Fassets%2Foffice%2Foffice-02.jpg&w=1080&q=80',
+      'https://conviviawork.com/_next/image?url=%2Fassets%2Foffice%2Foffice-03.jpg&w=1080&q=80',
+      'https://conviviawork.com/_next/image?url=%2Fassets%2Foffice%2Foffice-04.jpg&w=1080&q=80',
+    ];
+    let hpLbIndex = 0;
+    function openHpLightbox(idx) {
+      hpLbIndex = idx;
+      hpLbImg.src = hpPhotos[hpLbIndex];
+      hpLightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeHpLightbox() {
+      hpLightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function hpLbStep(dir) {
+      hpLbIndex = (hpLbIndex + dir + hpPhotos.length) % hpPhotos.length;
+      hpLbImg.src = hpPhotos[hpLbIndex];
+    }
+    ['shot-0','shot-1','shot-2','shot-3'].forEach((id, i) => {
+      const el = document.getElementById(id);
+      if (el) { el.style.cursor = 'zoom-in'; el.addEventListener('click', () => openHpLightbox(i)); }
+    });
+    hpLbClose.addEventListener('click', closeHpLightbox);
+    hpLbPrev.addEventListener('click', () => hpLbStep(-1));
+    hpLbNext.addEventListener('click', () => hpLbStep(1));
+    hpLightbox.addEventListener('click', e => { if (e.target === hpLightbox) closeHpLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeVideoModal(); closeHpLightbox(); }
+      if (hpLightbox.classList.contains('open')) {
+        if (e.key === 'ArrowLeft') hpLbStep(-1);
+        if (e.key === 'ArrowRight') hpLbStep(1);
+      }
+    });
+
+    // FAQ accordion — single open per section
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const list = btn.closest('.faq-list');
+        const isOpen = item.classList.contains('open');
+        list.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Screenshot rotation (every 3s, cycle the top-left image)
+    const officeImages = [
+      'https://conviviawork.com/_next/image?url=%2Fassets%2Foffice%2Foffice-01.jpg&w=640&q=75',
+      'https://conviviawork.com/_next/image?url=%2Fassets%2Foffice%2Foffice-02.jpg&w=640&q=75',
+      'https://conviviawork.com/_next/image?url=%2Fassets%2Foffice%2Foffice-03.jpg&w=640&q=75',
+      'https://conviviawork.com/_next/image?url=%2Fassets%2Foffice%2Foffice-04.jpg&w=640&q=75',
+    ];
+    let currentSet = 0;
+    setInterval(() => {
+      currentSet = (currentSet + 1) % officeImages.length;
+      const shots = ['shot-0','shot-1','shot-2','shot-3'];
+      shots.forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.style.opacity = '0';
+          el.style.transition = 'opacity 0.4s';
+          setTimeout(() => {
+            el.src = officeImages[(currentSet + i) % officeImages.length];
+            el.style.opacity = '1';
+          }, 400);
+        }
+      });
+    }, 3500);
+
+    // Show/hide desktop nav CTA based on screen width
+    function updateNavCTA() {
+      const cta = document.getElementById('nav-cta');
+      if (window.innerWidth < 768) {
+        cta.style.display = 'none';
+        hamburger.style.display = 'flex';
+      } else {
+        cta.style.display = 'inline-flex';
+        hamburger.style.display = 'none';
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+      }
+    }
+    window.addEventListener('resize', updateNavCTA);
+    updateNavCTA();
+  </script>
+</body>
+</html>

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AV Studio | Convivia Work</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #fe904d;
+      --orange-dark: #d6773d;
+      --dark: #2a2320;
+      --cream: #f5f0eb;
+      --black: #0c0c0c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-display { font-family: 'DM Serif Display', serif; }
+
+    /* ─── TOP BAR ─── */
+    .top-bar {
+      background: var(--dark);
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    .top-bar a {
+      color: var(--orange);
+      text-decoration: none;
+      margin-left: 8px;
+    }
+
+    /* ─── HEADER / NAV ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .nav-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+    .nav-logo { display: block; flex-shrink: 0; }
+    .nav-logo svg { height: 60px; width: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(0,0,0,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--black); }
+    .nav-links a.active { color: var(--black); font-weight: 700; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 0.85rem;
+    }
+    .btn-primary:hover { background: var(--orange-dark); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--black);
+      transition: all 0.3s;
+      border-radius: 2px;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 16px 24px 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      flex-direction: column;
+      gap: 16px;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      background: var(--dark);
+      padding: 80px 24px 72px;
+      text-align: center;
+    }
+    .page-hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .page-hero-headline {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      line-height: 1.08;
+      color: #fff;
+      margin-bottom: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .page-hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ─── FEATURE CHIPS ─── */
+    .chips-section {
+      background: var(--cream);
+      padding: 36px 24px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .chips-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .studio-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--black);
+    }
+    .studio-chip svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      stroke: var(--orange);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ─── PHOTO GRID ─── */
+    .studio-photos {
+      background: #fff;
+      padding: 72px 24px 80px;
+    }
+    .studio-photos-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+    }
+    .studio-main-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .studio-main-grid .img-tall {
+      grid-row: 1 / 3;
+    }
+    .studio-main-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .studio-main-grid .img-tall img { aspect-ratio: 3/4; }
+    .studio-main-grid .img-short img { aspect-ratio: 4/3; }
+    .studio-main-grid img:hover { opacity: 0.9; cursor: zoom-in; }
+
+    .studio-fourth {
+      width: 100%;
+    }
+    .studio-fourth img {
+      width: 100%;
+      aspect-ratio: 21/9;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .studio-fourth img:hover { opacity: 0.9; cursor: zoom-in; }
+
+    /* ─── DETAILS SECTION ─── */
+    .studio-details {
+      background: var(--cream);
+      padding: 72px 24px 80px;
+    }
+    .studio-details-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .studio-details-text h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .studio-details-text p {
+      font-size: 0.97rem;
+      line-height: 1.75;
+      color: rgba(0,0,0,0.6);
+      margin-bottom: 16px;
+    }
+    .studio-details-text p:last-of-type { margin-bottom: 32px; }
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark);
+      color: #fff;
+      padding: 13px 28px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-dark:hover { background: #3a3330; }
+    .studio-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .studio-spec-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .studio-spec-item:first-child { padding-top: 0; }
+    .studio-spec-item:last-child { border-bottom: none; }
+    .spec-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .spec-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .spec-body strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .spec-body span {
+      font-size: 0.85rem;
+      color: rgba(0,0,0,0.55);
+      line-height: 1.5;
+    }
+
+    /* ─── WHO IT'S FOR ─── */
+    .studio-for {
+      background: var(--dark);
+      padding: 72px 24px 80px;
+      text-align: center;
+    }
+    .studio-for-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .studio-for h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: #fff;
+      margin-bottom: 48px;
+    }
+    .studio-for-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .for-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: left;
+    }
+    .for-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(254,144,77,0.15);
+      border: 1px solid rgba(254,144,77,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .for-card-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--orange);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .for-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .for-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.93);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-overlay.open { display: flex; }
+    .lightbox-overlay img {
+      max-width: 88vw;
+      max-height: 86vh;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+      user-select: none;
+    }
+    .lb-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: #fff;
+      font-size: 1.8rem;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 1001;
+    }
+    .lb-btn:hover { background: rgba(255,255,255,0.24); }
+    .lb-prev { left: 16px; }
+    .lb-next { right: 16px; }
+    .lightbox-close {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: #fff;
+      font-size: 1.3rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 1001;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.22); }
+    .lb-counter {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.82rem;
+      font-family: 'Inter', sans-serif;
+      z-index: 1001;
+    }
+
+    /* ─── BOOK CTA ─── */
+    .studio-cta {
+      background: #fff;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .studio-cta h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      margin-bottom: 14px;
+    }
+    .studio-cta p {
+      font-size: 1rem;
+      color: rgba(0,0,0,0.55);
+      margin-bottom: 32px;
+    }
+    .btn-orange {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-orange:hover { background: var(--orange-dark); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 36px 24px;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px 24px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .footer-inner a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-inner a:hover { color: #fff; }
+    .footer-brand { font-weight: 600; color: #fff; }
+    .footer-sep {
+      display: inline-block;
+      width: 1px;
+      height: 16px;
+      background: rgba(255,255,255,0.2);
+      vertical-align: middle;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .studio-details-inner { grid-template-columns: 1fr; gap: 40px; }
+      .studio-for-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .studio-main-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .studio-main-grid .img-tall { grid-row: auto; }
+      .studio-main-grid .img-tall img { aspect-ratio: 4/3; }
+      .studio-for-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    1485 Treat Blvd, Walnut Creek, CA 94597 &nbsp;·&nbsp; Walkable to Pleasant Hill BART
+    <a href="https://maps.google.com/?q=1485+Treat+Blvd+Walnut+Creek+CA+94597" target="_blank">Get Directions ↗</a>
+  </div>
+
+  <header>
+    <div class="nav-inner">
+      <a href="mockup.html" class="nav-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 3171.4285714285716 1515.9321564732495"
+          role="img" aria-label="Convivia Work">
+          <g transform="scale(8.571428571428571) translate(10, 10)">
+            <g id="icon" transform="matrix(0.5079049078437439,0,0,0.5079049078437439,86.65857346743874,-57.9422849426956)" fill="#ffbc59"><g xmlns="http://www.w3.org/2000/svg"><path d="M175 135.96c7.2 0 13.23 4.79 15.69 11.39q.87 2.35.84 9.22-.05 9.14-.06 18.16 0 9.02.03 18.17.02 6.86-.86 9.21c-2.47 6.6-8.5 11.37-15.71 11.37-7.21-.01-13.23-4.79-15.7-11.4q-.87-2.35-.84-9.21.05-9.14.06-18.17.01-9.02-.03-18.16-.02-6.86.86-9.22c2.47-6.59 8.51-11.37 15.72-11.36M92.33 145.83c9.72.02 16.39 7.41 16.56 16.87q.15 8.78.15 12.07-.01 3.28-.21 12.07c-.22 9.45-6.92 16.81-16.64 16.79-9.72-.03-16.39-7.42-16.56-16.88q-.15-8.78-.14-12.07.01-3.28.2-12.07c.22-9.45 6.93-16.81 16.64-16.78" fill="#d6773d"></path></g><g xmlns="http://www.w3.org/2000/svg"><rect width="33.38" height="120.84" x="-16.69" y="-60.42" rx="16.22" transform="rotate(-.1 100064.989 -76333.826)" fill="#FE904D"></rect><rect width="33.02" height="57.08" x="-16.51" y="-28.54" rx="15.59" transform="rotate(-.1 100276.123 -147569.52)" fill="#FE904D"></rect></g><rect xmlns="http://www.w3.org/2000/svg" width="33.3" height="120.86" x="-16.65" y="-60.43" fill="#FFBC59" rx="16.17" transform="rotate(.1 -99918.726 124098.244)"></rect></g>
+            <g id="wordmark" transform="matrix(3.7321394010428466,0,0,3.7321394010428466,-2.313926001537106,59.204310667298735)" fill="#000000"><path d="M5.1 14.78 l2.08 0 l0 1.86 c0 2.24 -1.12 3.52 -3.28 3.52 s-3.28 -1.28 -3.28 -3.52 l0 -7.28 c0 -2.24 1.12 -3.52 3.28 -3.52 s3.28 1.28 3.28 3.52 l0 1.36 l-2.08 0 l0 -1.5 c0 -1 -0.44 -1.38 -1.14 -1.38 s-1.14 0.38 -1.14 1.38 l0 7.56 c0 1 0.44 1.36 1.14 1.36 s1.14 -0.36 1.14 -1.36 l0 -2 z M10.54 9.22 l0 7.56 c0 1 0.44 1.38 1.14 1.38 s1.14 -0.38 1.14 -1.38 l0 -7.56 c0 -1 -0.44 -1.38 -1.14 -1.38 s-1.14 0.38 -1.14 1.38 z M8.34 16.64 l0 -7.28 c0 -2.24 1.18 -3.52 3.34 -3.52 s3.34 1.28 3.34 3.52 l0 7.28 c0 2.24 -1.18 3.52 -3.34 3.52 s-3.34 -1.28 -3.34 -3.52 z M21.14 20 l-2.7 -10.14 l-0.04 0 l0 10.14 l-1.98 0 l0 -14 l2.76 0 l2.22 8.38 l0.04 0 l0 -8.38 l1.96 0 l0 14 l-2.26 0 z M26.62 6 l1.66 11.42 l0.04 0 l1.66 -11.42 l2.02 0 l-2.16 14 l-3.28 0 l-2.16 -14 l2.22 0 z M33.02 20 l0 -14 l2.2 0 l0 14 l-2.2 0 z M38.46 6 l1.66 11.42 l0.04 0 l1.66 -11.42 l2.02 0 l-2.16 14 l-3.28 0 l-2.16 -14 l2.22 0 z M44.86 20 l0 -14 l2.2 0 l0 14 l-2.2 0 z M53.54 6 l2.24 14 l-2.22 0 l-0.38 -2.54 l-2.7 0 l-0.38 2.54 l-2.02 0 l2.24 -14 l3.22 0 z M51.8 8.48 l-1.04 7.08 l2.12 0 l-1.04 -7.08 l-0.04 0 z M65.58 20 l-0.78 -7.46 l-0.04 0 l-0.78 7.46 l-3.02 0 l-1.56 -14 l2.14 0 l1.16 11.04 l0.04 0 l1.04 -11.04 l2.12 0 l1.08 11.12 l0.04 0 l1.12 -11.12 l1.92 0 l-1.56 14 l-2.92 0 z M73.18 9.22 l0 7.56 c0 1 0.44 1.38 1.14 1.38 s1.14 -0.38 1.14 -1.38 l0 -7.56 c0 -1 -0.44 -1.38 -1.14 -1.38 s-1.14 0.38 -1.14 1.38 z M70.98 16.64 l0 -7.28 c0 -2.24 1.18 -3.52 3.34 -3.52 s3.34 1.28 3.34 3.52 l0 7.28 c0 2.24 -1.18 3.52 -3.34 3.52 s-3.34 -1.28 -3.34 -3.52 z M85.92 20 l-2.24 0 c-0.12 -0.36 -0.2 -0.58 -0.2 -1.72 l0 -2.2 c0 -1.3 -0.44 -1.78 -1.44 -1.78 l-0.76 0 l0 5.7 l-2.2 0 l0 -14 l3.32 0 c2.28 0 3.26 1.06 3.26 3.22 l0 1.1 c0 1.44 -0.46 2.36 -1.44 2.82 l0 0.04 c1.1 0.46 1.46 1.5 1.46 2.96 l0 2.16 c0 0.68 0.02 1.18 0.24 1.7 z M82.34 8 l-1.06 0 l0 4.3 l0.86 0 c0.82 0 1.32 -0.36 1.32 -1.48 l0 -1.38 c0 -1 -0.34 -1.44 -1.12 -1.44 z M92.14 20 l-2.14 -5.58 l-0.68 1.28 l0 4.3 l-2.2 0 l0 -14 l2.2 0 l0 6.06 l0.04 0 l2.84 -6.06 l2.2 0 l-3.06 6.24 l3.06 7.76 l-2.26 0 z"></path></g>
+          </g>
+        </svg>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="mockup.html#workspace">Workspace</a></li>
+        <li><a href="conference-rooms.html">Conference Rooms</a></li>
+        <li><a href="av-studio.html" class="active">AV Studio</a></li>
+        <li><a href="memberships.html">Memberships</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+
+      <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn btn-primary">Book a Tour</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="mockup.html#workspace">Workspace</a>
+      <a href="conference-rooms.html">Conference Rooms</a>
+      <a href="av-studio.html">AV Studio</a>
+      <a href="memberships.html">Memberships</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="faq.html">FAQ</a>
+      <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn btn-primary">Book a Tour</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <div class="page-hero">
+      <p class="page-hero-eyebrow">AV Production Studio</p>
+      <h1 class="page-hero-headline font-display">Your content deserves a professional stage.</h1>
+      <p class="page-hero-sub">A production-ready studio built for podcasters, video creators, educators, and teams. Record, stream, and produce without compromise.</p>
+    </div>
+
+    <!-- Feature chips -->
+    <div class="chips-section">
+      <div class="chips-inner">
+        <span class="studio-chip">
+          <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 013 3v7a3 3 0 01-6 0V5a3 3 0 013-3z"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>
+          Acoustic Dampening
+        </span>
+        <span class="studio-chip">
+          <svg viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg>
+          Green Screen
+        </span>
+        <span class="studio-chip">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          Cinema-Grade Lighting
+        </span>
+        <span class="studio-chip">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          Teleprompter Ready
+        </span>
+        <span class="studio-chip">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          Interchangeable Backgrounds
+        </span>
+        <span class="studio-chip">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Plug-and-Play Hookups
+        </span>
+        <span class="studio-chip">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Live Streaming Ready
+        </span>
+      </div>
+    </div>
+
+    <!-- Photo grid -->
+    <section class="studio-photos">
+      <div class="studio-photos-inner">
+        <div class="studio-main-grid">
+          <div class="img-tall">
+            <img class="lightbox-trigger" src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fstudio-01.jpg&w=1080&q=80" alt="AV Production Studio" loading="lazy">
+          </div>
+          <div class="img-short">
+            <img class="lightbox-trigger" src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fstudio-02.jpg&w=1080&q=80" alt="Green screen setup" loading="lazy">
+          </div>
+          <div class="img-short">
+            <img class="lightbox-trigger" src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fstudio-03.jpg&w=1080&q=80" alt="Studio lighting" loading="lazy">
+          </div>
+        </div>
+        <div class="studio-fourth">
+          <img class="lightbox-trigger" src="https://conviviawork.com/_next/image?url=%2Fassets%2Fgallery%2Fstudio-04.jpg&w=1080&q=80" alt="AV Studio wide view" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close">&#x2715;</button>
+      <button class="lb-btn lb-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+      <img id="lightbox-img" src="" alt="">
+      <button class="lb-btn lb-next" id="lb-next" aria-label="Next">&#8250;</button>
+      <div class="lb-counter" id="lb-counter"></div>
+    </div>
+
+    <!-- Details + specs -->
+    <section class="studio-details">
+      <div class="studio-details-inner">
+        <div class="studio-details-text">
+          <h2 class="font-display">Built for serious creators.</h2>
+          <p>The Convivia AV Production Studio is a fully equipped, production-ready space built from the ground up for professionals who need reliable, high-quality output every time they hit record.</p>
+          <p>Whether you're launching a podcast, shooting a course, recording client testimonials, or running a live stream, the studio is ready. Bring your crew or fly solo; the setup adapts to both.</p>
+          <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn-dark">
+            Book a Tour to See It Live
+            <svg width="14" height="14" stroke="#fff" fill="none" stroke-width="2" viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+        <div class="studio-specs">
+          <div class="studio-spec-item">
+            <div class="spec-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 013 3v7a3 3 0 01-6 0V5a3 3 0 013-3z"/><path d="M19 10a7 7 0 01-14 0M12 19v3"/></svg>
+            </div>
+            <div class="spec-body">
+              <strong>Premium Acoustic Dampening</strong>
+              <span>Sound-treated walls and ceiling for clean, broadcast-quality audio recordings.</span>
+            </div>
+          </div>
+          <div class="studio-spec-item">
+            <div class="spec-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg>
+            </div>
+            <div class="spec-body">
+              <strong>Built-In Green Screen</strong>
+              <span>Full-height green screen with interchangeable backgrounds for any visual style.</span>
+            </div>
+          </div>
+          <div class="studio-spec-item">
+            <div class="spec-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2"/></svg>
+            </div>
+            <div class="spec-body">
+              <strong>Cinema-Grade Lighting</strong>
+              <span>Professional-grade key, fill, and hair lights. Adjustable for any look.</span>
+            </div>
+          </div>
+          <div class="studio-spec-item">
+            <div class="spec-icon">
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <div class="spec-body">
+              <strong>Plug-and-Play Production Hookups</strong>
+              <span>Camera ports, streaming rig connectors, and teleprompter support, all wired in.</span>
+            </div>
+          </div>
+          <div class="studio-spec-item">
+            <div class="spec-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div class="spec-body">
+              <strong>Multigigabit Upload</strong>
+              <span>Backed by Convivia's multigigabit infrastructure with 5G failover, built for live streaming.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who it's for -->
+    <section class="studio-for">
+      <p class="studio-for-eyebrow">Who It's For</p>
+      <h2 class="font-display">Made for makers of all kinds.</h2>
+      <div class="studio-for-grid">
+        <div class="for-card">
+          <div class="for-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 013 3v7a3 3 0 01-6 0V5a3 3 0 013-3z"/><path d="M19 10a7 7 0 01-14 0M12 19v3M8 22h8"/></svg>
+          </div>
+          <h3>Podcasters</h3>
+          <p>Record solo or with guests in a sound-treated environment built to deliver clean audio every take.</p>
+        </div>
+        <div class="for-card">
+          <div class="for-card-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg>
+          </div>
+          <h3>Video Creators</h3>
+          <p>Shoot courses, social content, or branded video with professional lighting and green screen ready to go.</p>
+        </div>
+        <div class="for-card">
+          <div class="for-card-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3>Live Streamers</h3>
+          <p>Stream to any platform with multigigabit upload speeds and a fully wired production setup.</p>
+        </div>
+        <div class="for-card">
+          <div class="for-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Educators & Coaches</h3>
+          <p>Film courses and coaching sessions with the visual polish your content deserves.</p>
+        </div>
+        <div class="for-card">
+          <div class="for-card-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Corporate Teams</h3>
+          <p>Produce internal communications, testimonials, and marketing video without hiring a production crew.</p>
+        </div>
+        <div class="for-card">
+          <div class="for-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Founders & Builders</h3>
+          <p>Record product demos, investor updates, and launch videos that hit the quality bar your brand deserves.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Book CTA -->
+    <section class="studio-cta">
+      <h2 class="font-display">Ready to record?</h2>
+      <p>Studio time is available to members via the Convivia mobile app. Not a member yet? Start with a tour.</p>
+      <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn-orange">
+        Book a Tour
+        <svg width="14" height="14" stroke="#fff" fill="none" stroke-width="2" viewBox="0 0 16 16" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-brand">© 2026 Convivia Work</span>
+      <span class="footer-sep"></span>
+      <span>1485 Treat Blvd, Walnut Creek, CA 94597</span>
+      <span class="footer-sep"></span>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <span class="footer-sep"></span>
+      <button style="color:rgba(255,255,255,0.55); background:none; border:none; cursor:pointer; font-size:0.82rem; font-family:inherit;">Manage Cookies</button>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // Lightbox with prev/next
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lbPrev = document.getElementById('lb-prev');
+    const lbNext = document.getElementById('lb-next');
+    const lbCounter = document.getElementById('lb-counter');
+
+    const studioImgs = Array.from(document.querySelectorAll('.lightbox-trigger'));
+    let lbIndex = 0;
+
+    function openLightbox(idx) {
+      lbIndex = idx;
+      lightboxImg.src = studioImgs[lbIndex].src;
+      lightboxImg.alt = studioImgs[lbIndex].alt;
+      lbCounter.textContent = (lbIndex + 1) + ' / ' + studioImgs.length;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function lbStep(dir) {
+      lbIndex = (lbIndex + dir + studioImgs.length) % studioImgs.length;
+      lightboxImg.src = studioImgs[lbIndex].src;
+      lightboxImg.alt = studioImgs[lbIndex].alt;
+      lbCounter.textContent = (lbIndex + 1) + ' / ' + studioImgs.length;
+    }
+
+    studioImgs.forEach((img, i) => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => openLightbox(i));
+    });
+    lightboxClose.addEventListener('click', closeLightbox);
+    lbPrev.addEventListener('click', () => lbStep(-1));
+    lbNext.addEventListener('click', () => lbStep(1));
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lbStep(-1);
+      if (e.key === 'ArrowRight') lbStep(1);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memberships — Convivia Work</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #fe904d;
+      --orange-dark: #d6773d;
+      --dark: #2a2320;
+      --cream: #f5f0eb;
+      --black: #0c0c0c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-display { font-family: 'DM Serif Display', serif; }
+
+    /* ─── TOP BAR ─── */
+    .top-bar {
+      background: var(--dark);
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    .top-bar a {
+      color: var(--orange);
+      text-decoration: none;
+      margin-left: 8px;
+    }
+
+    /* ─── HEADER / NAV ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .nav-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+    .nav-logo { display: block; flex-shrink: 0; }
+    .nav-logo svg { height: 60px; width: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(0,0,0,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--black); }
+    .nav-links a.active { color: var(--black); font-weight: 700; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 0.85rem;
+    }
+    .btn-primary:hover { background: var(--orange-dark); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--black);
+      transition: all 0.3s;
+      border-radius: 2px;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 16px 24px 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      flex-direction: column;
+      gap: 16px;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      background: var(--dark);
+      padding: 72px 24px 64px;
+      text-align: center;
+    }
+    .page-hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .page-hero-headline {
+      font-size: 3.2rem;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .page-hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+    }
+    .page-hero-sub a {
+      color: var(--orange);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .page-hero-sub a:hover { text-decoration: underline; }
+
+    /* ─── MEMBERSHIPS ─── */
+    .memberships {
+      background: #fff;
+      padding: 80px 24px 100px;
+    }
+    .memberships-inner { max-width: 1152px; margin: 0 auto; }
+    .memberships-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .memberships-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--black);
+      margin-bottom: 48px;
+    }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .plan-card {
+      background: var(--cream);
+      border-radius: 24px;
+      padding: 36px;
+      border: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+    .plan-card.featured {
+      background: var(--dark);
+      color: #fff;
+    }
+    .plan-tier {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.4);
+      margin-bottom: 8px;
+    }
+    .plan-card.featured .plan-tier { color: rgba(255,255,255,0.5); }
+    .plan-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+    .plan-card.featured .plan-name { color: #fff; }
+    .plan-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--black);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .plan-card.featured .plan-price { color: var(--orange); }
+    .plan-period {
+      font-size: 0.82rem;
+      color: rgba(0,0,0,0.4);
+      margin-bottom: 16px;
+    }
+    .plan-card.featured .plan-period { color: rgba(255,255,255,0.4); }
+    .plan-desc {
+      font-size: 0.9rem;
+      color: rgba(0,0,0,0.65);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .plan-card.featured .plan-desc { color: rgba(255,255,255,0.7); }
+    .plan-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+    .plan-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: rgba(0,0,0,0.7);
+    }
+    .plan-card.featured .plan-bullets li { color: rgba(255,255,255,0.75); }
+    .plan-bullets li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .plan-fit {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(0,0,0,0.45);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .plan-card.featured .plan-fit { color: rgba(255,255,255,0.4); }
+    .plan-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-banner {
+      background: var(--dark);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .cta-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .cta-headline {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .cta-body {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 36px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary-lg {
+      background: var(--orange);
+      color: #fff;
+      padding: 14px 30px;
+      font-size: 0.95rem;
+    }
+    .btn-primary-lg:hover { background: var(--orange-dark); }
+    .btn-outline-white {
+      background: transparent;
+      color: #fff;
+      padding: 14px 30px;
+      border: 2px solid rgba(255,255,255,0.3) !important;
+      font-size: 0.95rem;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 36px 24px;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1152px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px 24px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .footer-inner a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-inner a:hover { color: #fff; }
+    .footer-brand { font-weight: 600; color: #fff; }
+    .footer-sep {
+      display: inline-block;
+      width: 1px;
+      height: 16px;
+      background: rgba(255,255,255,0.2);
+      vertical-align: middle;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .plans-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-hero-headline { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    1485 Treat Blvd, Walnut Creek, CA 94597 &nbsp;·&nbsp; Walkable to Pleasant Hill BART
+    <a href="https://maps.google.com/?q=1485+Treat+Blvd+Walnut+Creek+CA+94597" target="_blank">Get Directions ↗</a>
+  </div>
+
+  <header>
+    <div class="nav-inner">
+      <a href="mockup.html" class="nav-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 3171.4285714285716 1515.9321564732495"
+          role="img" aria-label="Convivia Work">
+          <g transform="scale(8.571428571428571) translate(10, 10)">
+            <g id="icon" transform="matrix(0.5079049078437439,0,0,0.5079049078437439,86.65857346743874,-57.9422849426956)" fill="#ffbc59"><g xmlns="http://www.w3.org/2000/svg"><path d="M175 135.96c7.2 0 13.23 4.79 15.69 11.39q.87 2.35.84 9.22-.05 9.14-.06 18.16 0 9.02.03 18.17.02 6.86-.86 9.21c-2.47 6.6-8.5 11.37-15.71 11.37-7.21-.01-13.23-4.79-15.7-11.4q-.87-2.35-.84-9.21.05-9.14.06-18.17.01-9.02-.03-18.16-.02-6.86.86-9.22c2.47-6.59 8.51-11.37 15.72-11.36M92.33 145.83c9.72.02 16.39 7.41 16.56 16.87q.15 8.78.15 12.07-.01 3.28-.21 12.07c-.22 9.45-6.92 16.81-16.64 16.79-9.72-.03-16.39-7.42-16.56-16.88q-.15-8.78-.14-12.07.01-3.28.2-12.07c.22-9.45 6.93-16.81 16.64-16.78" fill="#d6773d"></path></g><g xmlns="http://www.w3.org/2000/svg"><rect width="33.38" height="120.84" x="-16.69" y="-60.42" rx="16.22" transform="rotate(-.1 100064.989 -76333.826)" fill="#FE904D"></rect><rect width="33.02" height="57.08" x="-16.51" y="-28.54" rx="15.59" transform="rotate(-.1 100276.123 -147569.52)" fill="#FE904D"></rect></g><rect xmlns="http://www.w3.org/2000/svg" width="33.3" height="120.86" x="-16.65" y="-60.43" fill="#FFBC59" rx="16.17" transform="rotate(.1 -99918.726 124098.244)"></rect></g>
+            <g id="wordmark" transform="matrix(3.7321394010428466,0,0,3.7321394010428466,-2.313926001537106,59.204310667298735)" fill="#000000"><path d="M5.1 14.78 l2.08 0 l0 1.86 c0 2.24 -1.12 3.52 -3.28 3.52 s-3.28 -1.28 -3.28 -3.52 l0 -7.28 c0 -2.24 1.12 -3.52 3.28 -3.52 s3.28 1.28 3.28 3.52 l0 1.36 l-2.08 0 l0 -1.5 c0 -1 -0.44 -1.38 -1.14 -1.38 s-1.14 0.38 -1.14 1.38 l0 7.56 c0 1 0.44 1.36 1.14 1.36 s1.14 -0.36 1.14 -1.36 l0 -2 z M10.54 9.22 l0 7.56 c0 1 0.44 1.38 1.14 1.38 s1.14 -0.38 1.14 -1.38 l0 -7.56 c0 -1 -0.44 -1.38 -1.14 -1.38 s-1.14 0.38 -1.14 1.38 z M8.34 16.64 l0 -7.28 c0 -2.24 1.18 -3.52 3.34 -3.52 s3.34 1.28 3.34 3.52 l0 7.28 c0 2.24 -1.18 3.52 -3.34 3.52 s-3.34 -1.28 -3.34 -3.52 z M21.14 20 l-2.7 -10.14 l-0.04 0 l0 10.14 l-1.98 0 l0 -14 l2.76 0 l2.22 8.38 l0.04 0 l0 -8.38 l1.96 0 l0 14 l-2.26 0 z M26.62 6 l1.66 11.42 l0.04 0 l1.66 -11.42 l2.02 0 l-2.16 14 l-3.28 0 l-2.16 -14 l2.22 0 z M33.02 20 l0 -14 l2.2 0 l0 14 l-2.2 0 z M38.46 6 l1.66 11.42 l0.04 0 l1.66 -11.42 l2.02 0 l-2.16 14 l-3.28 0 l-2.16 -14 l2.22 0 z M44.86 20 l0 -14 l2.2 0 l0 14 l-2.2 0 z M53.54 6 l2.24 14 l-2.22 0 l-0.38 -2.54 l-2.7 0 l-0.38 2.54 l-2.02 0 l2.24 -14 l3.22 0 z M51.8 8.48 l-1.04 7.08 l2.12 0 l-1.04 -7.08 l-0.04 0 z M65.58 20 l-0.78 -7.46 l-0.04 0 l-0.78 7.46 l-3.02 0 l-1.56 -14 l2.14 0 l1.16 11.04 l0.04 0 l1.04 -11.04 l2.12 0 l1.08 11.12 l0.04 0 l1.12 -11.12 l1.92 0 l-1.56 14 l-2.92 0 z M73.18 9.22 l0 7.56 c0 1 0.44 1.38 1.14 1.38 s1.14 -0.38 1.14 -1.38 l0 -7.56 c0 -1 -0.44 -1.38 -1.14 -1.38 s-1.14 0.38 -1.14 1.38 z M70.98 16.64 l0 -7.28 c0 -2.24 1.18 -3.52 3.34 -3.52 s3.34 1.28 3.34 3.52 l0 7.28 c0 2.24 -1.18 3.52 -3.34 3.52 s-3.34 -1.28 -3.34 -3.52 z M85.92 20 l-2.24 0 c-0.12 -0.36 -0.2 -0.58 -0.2 -1.72 l0 -2.2 c0 -1.3 -0.44 -1.78 -1.44 -1.78 l-0.76 0 l0 5.7 l-2.2 0 l0 -14 l3.32 0 c2.28 0 3.26 1.06 3.26 3.22 l0 1.1 c0 1.44 -0.46 2.36 -1.44 2.82 l0 0.04 c1.1 0.46 1.46 1.5 1.46 2.96 l0 2.16 c0 0.68 0.02 1.18 0.24 1.7 z M82.34 8 l-1.06 0 l0 4.3 l0.86 0 c0.82 0 1.32 -0.36 1.32 -1.48 l0 -1.38 c0 -1 -0.34 -1.44 -1.12 -1.44 z M92.14 20 l-2.14 -5.58 l-0.68 1.28 l0 4.3 l-2.2 0 l0 -14 l2.2 0 l0 6.06 l0.04 0 l2.84 -6.06 l2.2 0 l-3.06 6.24 l3.06 7.76 l-2.26 0 z"></path></g>
+          </g>
+        </svg>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="mockup.html#workspace">Workspace</a></li>
+        <li><a href="conference-rooms.html">Conference Rooms</a></li>
+        <li><a href="av-studio.html">AV Studio</a></li>
+        <li><a href="memberships.html" class="active">Memberships</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+
+      <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn btn-primary">Book a Tour</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="mockup.html#workspace">Workspace</a>
+      <a href="conference-rooms.html">Conference Rooms</a>
+      <a href="av-studio.html">AV Studio</a>
+      <a href="memberships.html">Memberships</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="faq.html">FAQ</a>
+      <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn btn-primary">Book a Tour</a>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="page-hero">
+      <p class="page-hero-eyebrow">Memberships</p>
+      <h1 class="page-hero-headline font-display">Choose how you plug in.</h1>
+      <p class="page-hero-sub">Every plan includes the full Convivia experience. <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank">Book a tour to see it in person.</a></p>
+    </div>
+
+    <section class="memberships">
+      <div class="memberships-inner">
+        <p class="memberships-eyebrow">Memberships</p>
+        <h2 class="memberships-headline font-display">Choose how you plug into Convivia Work.</h2>
+        <div class="plans-grid">
+
+          <!-- Day Pass -->
+          <div class="plan-card">
+            <div class="plan-tier">Day Pass</div>
+            <div class="plan-name">Day Pass</div>
+            <div class="plan-price font-display">$50</div>
+            <div class="plan-period">per day</div>
+            <p class="plan-desc">Drop in for a focused workday and sample the Convivia energy.</p>
+            <ul class="plan-bullets">
+              <li>Adjustable standing desk + ergonomic seating</li>
+              <li>External monitor, laptop stand, power &amp; fast WiFi</li>
+              <li>Kitchen and coffee program access</li>
+              <li>Phone booths + quiet zones</li>
+            </ul>
+            <p class="plan-fit">Perfect for visiting founders, fractional teams, and trial runs.</p>
+            <div class="plan-actions">
+              <a href="https://conviviawork.coworksapp.com/day-pass-signup/716?plan=11611" target="_blank" class="btn btn-primary" style="font-size:0.82rem; padding:10px 18px">Sign Up</a>
+            </div>
+          </div>
+
+          <!-- Coworking Membership -->
+          <div class="plan-card featured">
+            <div class="plan-tier">Most Popular</div>
+            <div class="plan-name">Coworking Membership</div>
+            <div class="plan-price font-display">$382</div>
+            <div class="plan-period">per month</div>
+            <p class="plan-desc">Everything in the Day Pass plus full-time momentum.</p>
+            <ul class="plan-bullets">
+              <li>24/7 access with smart entry</li>
+              <li>Conference room credits in your membership app</li>
+              <li>Priority invites to founder salons + community events</li>
+              <li>Flexible seating across focus zones and lounges</li>
+            </ul>
+            <p class="plan-fit">Your baseline for being part of the Convivia builder community.</p>
+            <div class="plan-actions">
+              <a href="https://conviviawork.coworksapp.com/membership-signup/11506" target="_blank" class="btn btn-primary" style="font-size:0.82rem; padding:10px 18px">Sign Up</a>
+            </div>
+          </div>
+
+          <!-- Dedicated Desk -->
+          <div class="plan-card">
+            <div class="plan-tier">Dedicated Desk</div>
+            <div class="plan-name">Dedicated Desk Membership</div>
+            <div class="plan-price font-display">$450</div>
+            <div class="plan-period">per month</div>
+            <p class="plan-desc">The Coworking Membership plus a desk you can truly make your own.</p>
+            <ul class="plan-bullets">
+              <li>Select and personalize your workstation</li>
+              <li>Lockable storage cabinet + mail service</li>
+              <li>Additional conference room credits</li>
+              <li>Keep gear, monitors, and peripherals in place</li>
+            </ul>
+            <p class="plan-fit">Ideal for creators who want permanence without sacrificing community.</p>
+            <div class="plan-actions">
+              <a href="https://conviviawork.coworksapp.com/membership-signup/11777" target="_blank" class="btn btn-primary" style="font-size:0.82rem; padding:10px 18px">Sign Up</a>
+            </div>
+          </div>
+
+          <!-- Team Suite -->
+          <div class="plan-card">
+            <div class="plan-tier">Team</div>
+            <div class="plan-name">Custom Team Suite</div>
+            <div class="plan-price font-display" style="font-size:2.2rem">Custom</div>
+            <div class="plan-period">per team</div>
+            <p class="plan-desc">Private studios for teams of 2–12 with full access to the shared ecosystem.</p>
+            <ul class="plan-bullets">
+              <li>Dedicated office with natural light + private storage</li>
+              <li>Additional conference room allotments</li>
+              <li>Closed-door focus plus open coworking access</li>
+              <li>Concierge support for IT, guests, and workshops</li>
+            </ul>
+            <p class="plan-fit">Scale-ups, agencies, and distributed teams get a branded home base.</p>
+            <div class="plan-actions">
+              <a href="https://conviviawork.coworksapp.com/membership-request/716" target="_blank" class="btn btn-primary" style="font-size:0.82rem; padding:10px 18px">Contact Team</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <p class="cta-eyebrow">Tours open now</p>
+      <h2 class="cta-headline font-display">See the space IRL.</h2>
+      <p class="cta-body">Walk through Convivia Work, test the network, and grab a coffee with our community team.</p>
+      <div class="cta-buttons">
+        <a href="https://conviviawork.coworksapp.com/tour-request/716" target="_blank" class="btn btn-primary-lg">Book a Tour</a>
+        <a href="https://conviviawork.coworksapp.com/membership-request/716" target="_blank" class="btn btn-outline-white">Contact Team</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-brand">Convivia Work</span>
+      <span class="footer-sep"></span>
+      <span>1485 Treat Blvd, Walnut Creek, CA 94597</span>
+      <span class="footer-sep"></span>
+      <a href="https://conviviawork.com" target="_blank">conviviawork.com</a>
+      <span class="footer-sep"></span>
+      <a href="faq.html">FAQ</a>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

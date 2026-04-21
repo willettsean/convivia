@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Font Concepts — Convivia Work</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Serif+Display&family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Cormorant+Garamond:wght@700&family=Libre+Baskerville:wght@700&family=Lora:wght@700&family=Source+Serif+4:opsz,wght@8..60,700;8..60,800&family=Newsreader:opsz,wght@6..72,700;6..72,800&family=Bitter:wght@700;800&family=Zilla+Slab:wght@700&family=Syne:wght@700;800&family=Cabinet+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --orange: #fe904d;
+      --dark: #2a2320;
+      --cream: #f5f0eb;
+      --black: #0c0c0c;
+    }
+    body { font-family: 'Inter', sans-serif; background: #f0ece8; color: var(--black); -webkit-font-smoothing: antialiased; }
+
+    .page-header {
+      background: var(--dark);
+      padding: 40px 24px;
+      text-align: center;
+      color: #fff;
+    }
+    .page-header p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+      margin-top: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+    .page-header h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .grid {
+      max-width: 1200px;
+      margin: 48px auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .card-label {
+      background: var(--dark);
+      color: rgba(255,255,255,0.6);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-label span {
+      color: var(--orange);
+    }
+    .card-body {
+      padding: 36px 36px 32px;
+    }
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(0,0,0,0.5);
+      line-height: 1.65;
+      margin-top: 14px;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(0,0,0,0.07);
+      margin: 20px 0;
+    }
+    .dark-sample {
+      background: var(--dark);
+      padding: 24px 36px;
+    }
+    .dark-sample .eyebrow { color: var(--orange); }
+
+    /* ── Current (for reference) ── */
+    .f-playfair { font-family: 'Playfair Display', serif; }
+
+    /* ── Option A: DM Serif Display ── */
+    .f-dm { font-family: 'DM Serif Display', serif; }
+
+    /* ── Option B: Source Serif 4 ── */
+    .f-source { font-family: 'Source Serif 4', serif; }
+
+    /* ── Option C: Newsreader ── */
+    .f-newsreader { font-family: 'Newsreader', serif; }
+
+    /* ── Option D: Bitter ── */
+    .f-bitter { font-family: 'Bitter', serif; }
+
+    /* ── Option E: Zilla Slab ── */
+    .f-zilla { font-family: 'Zilla Slab', serif; }
+
+    /* ── Option F: Fraunces ── */
+    .f-fraunces { font-family: 'Fraunces', serif; }
+
+    /* ── Option G: Lora ── */
+    .f-lora { font-family: 'Lora', serif; }
+
+    .h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; }
+    .h2 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 700; line-height: 1.1; }
+
+    .dark-h { color: #fff; }
+    .dark-sub { color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; font-size: 0.88rem; line-height: 1.65; margin-top: 10px; }
+
+    .tag {
+      display: inline-block;
+      background: var(--cream);
+      color: rgba(0,0,0,0.5);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <h1>Font Options — Display / Header Type</h1>
+    <p>Showing each option in both light and dark contexts. Body copy stays Inter throughout.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- CURRENT -->
+    <div class="card">
+      <div class="card-label">Current — Playfair Display <span>FOR REFERENCE</span></div>
+      <div class="card-body">
+        <p class="eyebrow">Infrastructure</p>
+        <h2 class="h1 f-playfair">Built for people who can't afford slow.</h2>
+        <p class="sub">Multigigabit internet. 5G failover. 4K conferencing. A production studio. Smart access.</p>
+        <span class="tag">High contrast · Very decorative · Swirly serifs</span>
+      </div>
+      <div class="dark-sample">
+        <p class="eyebrow">Memberships</p>
+        <h2 class="h2 f-playfair dark-h">Choose how you plug into Convivia Work.</h2>
+        <p class="dark-sub">Every plan includes the full Convivia experience.</p>
+      </div>
+    </div>
+
+    <!-- OPTION A: DM Serif Display -->
+    <div class="card">
+      <div class="card-label">Option A — DM Serif Display <span>RECOMMENDED</span></div>
+      <div class="card-body">
+        <p class="eyebrow">Infrastructure</p>
+        <h2 class="h1 f-dm">Built for people who can't afford slow.</h2>
+        <p class="sub">Multigigabit internet. 5G failover. 4K conferencing. A production studio. Smart access.</p>
+        <span class="tag">Clean serifs · Editorial · Less ornate than Playfair</span>
+      </div>
+      <div class="dark-sample">
+        <p class="eyebrow">Memberships</p>
+        <h2 class="h2 f-dm dark-h">Choose how you plug into Convivia Work.</h2>
+        <p class="dark-sub">Every plan includes the full Convivia experience.</p>
+      </div>
+    </div>
+
+    <!-- OPTION B: Source Serif 4 -->
+    <div class="card">
+      <div class="card-label">Option B — Source Serif 4</div>
+      <div class="card-body">
+        <p class="eyebrow">Infrastructure</p>
+        <h2 class="h1 f-source">Built for people who can't afford slow.</h2>
+        <p class="sub">Multigigabit internet. 5G failover. 4K conferencing. A production studio. Smart access.</p>
+        <span class="tag">Workhorse serif · Reliable · Slightly utilitarian</span>
+      </div>
+      <div class="dark-sample">
+        <p class="eyebrow">Memberships</p>
+        <h2 class="h2 f-source dark-h">Choose how you plug into Convivia Work.</h2>
+        <p class="dark-sub">Every plan includes the full Convivia experience.</p>
+      </div>
+    </div>
+
+    <!-- OPTION C: Newsreader -->
+    <div class="card">
+      <div class="card-label">Option C — Newsreader</div>
+      <div class="card-body">
+        <p class="eyebrow">Infrastructure</p>
+        <h2 class="h1 f-newsreader">Built for people who can't afford slow.</h2>
+        <p class="sub">Multigigabit internet. 5G failover. 4K conferencing. A production studio. Smart access.</p>
+        <span class="tag">Newspaper editorial · Confident · Strong contrast</span>
+      </div>
+      <div class="dark-sample">
+        <p class="eyebrow">Memberships</p>
+        <h2 class="h2 f-newsreader dark-h">Choose how you plug into Convivia Work.</h2>
+        <p class="dark-sub">Every plan includes the full Convivia experience.</p>
+      </div>
+    </div>
+
+    <!-- OPTION D: Bitter -->
+    <div class="card">
+      <div class="card-label">Option D — Bitter</div>
+      <div class="card-body">
+        <p class="eyebrow">Infrastructure</p>
+        <h2 class="h1 f-bitter">Built for people who can't afford slow.</h2>
+        <p class="sub">Multigigabit internet. 5G failover. 4K conferencing. A production studio. Smart access.</p>
+        <span class="tag">Slab serif · Bold · Grounded and direct</span>
+      </div>
+      <div class="dark-sample">
+        <p class="eyebrow">Memberships</p>
+        <h2 class="h2 f-bitter dark-h">Choose how you plug into Convivia Work.</h2>
+        <p class="dark-sub">Every plan includes the full Convivia experience.</p>
+      </div>
+    </div>
+
+    <!-- OPTION E: Zilla Slab -->
+    <div class="card">
+      <div class="card-label">Option E — Zilla Slab</div>
+      <div class="card-body">
+        <p class="eyebrow">Infrastructure</p>
+        <h2 class="h1 f-zilla">Built for people who can't afford slow.</h2>
+        <p class="sub">Multigigabit internet. 5G failover. 4K conferencing. A production studio. Smart access.</p>
+        <span class="tag">Slab serif · Friendly · Slightly tech-forward</span>
+      </div>
+      <div class="dark-sample">
+        <p class="eyebrow">Memberships</p>
+        <h2 class="h2 f-zilla dark-h">Choose how you plug into Convivia Work.</h2>
+        <p class="dark-sub">Every plan includes the full Convivia experience.</p>
+      </div>
+    </div>
+
+    <!-- OPTION F: Fraunces -->
+    <div class="card">
+      <div class="card-label">Option F — Fraunces</div>
+      <div class="card-body">
+        <p class="eyebrow">Infrastructure</p>
+        <h2 class="h1 f-fraunces">Built for people who can't afford slow.</h2>
+        <p class="sub">Multigigabit internet. 5G failover. 4K conferencing. A production studio. Smart access.</p>
+        <span class="tag">Optical size · Distinctive · Character without fussiness</span>
+      </div>
+      <div class="dark-sample">
+        <p class="eyebrow">Memberships</p>
+        <h2 class="h2 f-fraunces dark-h">Choose how you plug into Convivia Work.</h2>
+        <p class="dark-sub">Every plan includes the full Convivia experience.</p>
+      </div>
+    </div>
+
+    <!-- OPTION G: Lora -->
+    <div class="card">
+      <div class="card-label">Option G — Lora</div>
+      <div class="card-body">
+        <p class="eyebrow">Infrastructure</p>
+        <h2 class="h1 f-lora">Built for people who can't afford slow.</h2>
+        <p class="sub">Multigigabit internet. 5G failover. 4K conferencing. A production studio. Smart access.</p>
+        <span class="tag">Calligraphic roots · Warm · More readable at smaller sizes</span>
+      </div>
+      <div class="dark-sample">
+        <p class="eyebrow">Memberships</p>
+        <h2 class="h2 f-lora dark-h">Choose how you plug into Convivia Work.</h2>
+        <p class="dark-sub">Every plan includes the full Convivia experience.</p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

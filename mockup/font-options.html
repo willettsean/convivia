@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convivia — Headline Font Options</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@700;800&family=Manrope:wght@700;800&family=DM+Sans:wght@700;800;900&family=Nunito+Sans:wght@700;800;900&family=Work+Sans:wght@700;800;900&family=Lexend:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #fe904d;
+      --dark: #2a2320;
+      --cream: #f5f0eb;
+      --black: #0c0c0c;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #edeae4;
+      color: var(--black);
+      padding: 48px 24px 64px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-label {
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .page-title {
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 48px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto 48px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+    .card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 4px 20px rgba(254,144,77,0.15);
+    }
+
+    /* Dark hero strip */
+    .card-dark {
+      background: var(--dark);
+      padding: 24px 22px 22px;
+      position: relative;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .opt-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 8px;
+    }
+    .dark-headline {
+      font-size: 1.65rem;
+      line-height: 1.08;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .dark-sub {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+    }
+
+    /* Light body strip */
+    .card-light {
+      padding: 20px 22px 22px;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+    .light-eyebrow {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 8px;
+    }
+    .light-headline {
+      font-size: 1.15rem;
+      line-height: 1.15;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .light-body {
+      font-size: 0.78rem;
+      color: rgba(0,0,0,0.55);
+      line-height: 1.55;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Meta strip */
+    .card-meta {
+      padding: 0 22px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .meta-name {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: rgba(0,0,0,0.35);
+      font-family: 'Inter', sans-serif;
+    }
+    .meta-tag {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--cream);
+      color: rgba(0,0,0,0.4);
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+
+    /* Font classes */
+    .f-inter       { font-family: 'Inter', sans-serif; font-weight: 800; }
+    .f-outfit      { font-family: 'Outfit', sans-serif; font-weight: 800; }
+    .f-jakarta     { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; }
+    .f-manrope     { font-family: 'Manrope', sans-serif; font-weight: 800; }
+    .f-dm          { font-family: 'DM Sans', sans-serif; font-weight: 900; }
+    .f-nunito      { font-family: 'Nunito Sans', sans-serif; font-weight: 900; }
+    .f-work        { font-family: 'Work Sans', sans-serif; font-weight: 800; }
+    .f-lexend      { font-family: 'Lexend', sans-serif; font-weight: 800; }
+
+    /* Second row label */
+    .row-label {
+      max-width: 1200px;
+      margin: 0 auto 16px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <p class="page-label">Convivia Work</p>
+  <p class="page-title">Headline Font Options — pick the one that feels right, or point me in a direction</p>
+
+  <p class="row-label">Options A – D</p>
+  <div class="grid">
+
+    <!-- A: Inter -->
+    <div class="card">
+      <div class="card-dark">
+        <div class="badge">A</div>
+        <p class="opt-label">Inter</p>
+        <h2 class="dark-headline f-inter">A Tech-Forward<br>Coworking Space</h2>
+        <p class="dark-sub">For Founders, Creatives, and Power Builders</p>
+      </div>
+      <div class="card-light">
+        <p class="light-eyebrow">Technology-First</p>
+        <h3 class="light-headline f-inter">Infrastructure that keeps up with your ambition.</h3>
+        <p class="light-body">Multi gigabit internet, 5G failover, and AV-native spaces for hybrid teams.</p>
+      </div>
+      <div class="card-meta">
+        <span class="meta-name">Inter — the benchmark</span>
+        <span class="meta-tag">Sans-Serif</span>
+      </div>
+    </div>
+
+    <!-- B: Outfit -->
+    <div class="card">
+      <div class="card-dark">
+        <div class="badge">B</div>
+        <p class="opt-label">Outfit</p>
+        <h2 class="dark-headline f-outfit">A Tech-Forward<br>Coworking Space</h2>
+        <p class="dark-sub">For Founders, Creatives, and Power Builders</p>
+      </div>
+      <div class="card-light">
+        <p class="light-eyebrow">Technology-First</p>
+        <h3 class="light-headline f-outfit">Infrastructure that keeps up with your ambition.</h3>
+        <p class="light-body">Multi gigabit internet, 5G failover, and AV-native spaces for hybrid teams.</p>
+      </div>
+      <div class="card-meta">
+        <span class="meta-name">Outfit — modern, rounded</span>
+        <span class="meta-tag">Sans-Serif</span>
+      </div>
+    </div>
+
+    <!-- C: Plus Jakarta Sans -->
+    <div class="card">
+      <div class="card-dark">
+        <div class="badge">C</div>
+        <p class="opt-label">Plus Jakarta Sans</p>
+        <h2 class="dark-headline f-jakarta">A Tech-Forward<br>Coworking Space</h2>
+        <p class="dark-sub">For Founders, Creatives, and Power Builders</p>
+      </div>
+      <div class="card-light">
+        <p class="light-eyebrow">Technology-First</p>
+        <h3 class="light-headline f-jakarta">Infrastructure that keeps up with your ambition.</h3>
+        <p class="light-body">Multi gigabit internet, 5G failover, and AV-native spaces for hybrid teams.</p>
+      </div>
+      <div class="card-meta">
+        <span class="meta-name">Jakarta — clean, professional</span>
+        <span class="meta-tag">Sans-Serif</span>
+      </div>
+    </div>
+
+    <!-- D: Manrope -->
+    <div class="card">
+      <div class="card-dark">
+        <div class="badge">D</div>
+        <p class="opt-label">Manrope</p>
+        <h2 class="dark-headline f-manrope">A Tech-Forward<br>Coworking Space</h2>
+        <p class="dark-sub">For Founders, Creatives, and Power Builders</p>
+      </div>
+      <div class="card-light">
+        <p class="light-eyebrow">Technology-First</p>
+        <h3 class="light-headline f-manrope">Infrastructure that keeps up with your ambition.</h3>
+        <p class="light-body">Multi gigabit internet, 5G failover, and AV-native spaces for hybrid teams.</p>
+      </div>
+      <div class="card-meta">
+        <span class="meta-name">Manrope — geometric, refined</span>
+        <span class="meta-tag">Sans-Serif</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="row-label">Options E – H</p>
+  <div class="grid">
+
+    <!-- E: DM Sans -->
+    <div class="card">
+      <div class="card-dark">
+        <div class="badge">E</div>
+        <p class="opt-label">DM Sans</p>
+        <h2 class="dark-headline f-dm">A Tech-Forward<br>Coworking Space</h2>
+        <p class="dark-sub">For Founders, Creatives, and Power Builders</p>
+      </div>
+      <div class="card-light">
+        <p class="light-eyebrow">Technology-First</p>
+        <h3 class="light-headline f-dm">Infrastructure that keeps up with your ambition.</h3>
+        <p class="light-body">Multi gigabit internet, 5G failover, and AV-native spaces for hybrid teams.</p>
+      </div>
+      <div class="card-meta">
+        <span class="meta-name">DM Sans — compact, editorial</span>
+        <span class="meta-tag">Sans-Serif</span>
+      </div>
+    </div>
+
+    <!-- F: Nunito Sans -->
+    <div class="card">
+      <div class="card-dark">
+        <div class="badge">F</div>
+        <p class="opt-label">Nunito Sans</p>
+        <h2 class="dark-headline f-nunito">A Tech-Forward<br>Coworking Space</h2>
+        <p class="dark-sub">For Founders, Creatives, and Power Builders</p>
+      </div>
+      <div class="card-light">
+        <p class="light-eyebrow">Technology-First</p>
+        <h3 class="light-headline f-nunito">Infrastructure that keeps up with your ambition.</h3>
+        <p class="light-body">Multi gigabit internet, 5G failover, and AV-native spaces for hybrid teams.</p>
+      </div>
+      <div class="card-meta">
+        <span class="meta-name">Nunito Sans — warm, approachable</span>
+        <span class="meta-tag">Sans-Serif</span>
+      </div>
+    </div>
+
+    <!-- G: Work Sans -->
+    <div class="card">
+      <div class="card-dark">
+        <div class="badge">G</div>
+        <p class="opt-label">Work Sans</p>
+        <h2 class="dark-headline f-work">A Tech-Forward<br>Coworking Space</h2>
+        <p class="dark-sub">For Founders, Creatives, and Power Builders</p>
+      </div>
+      <div class="card-light">
+        <p class="light-eyebrow">Technology-First</p>
+        <h3 class="light-headline f-work">Infrastructure that keeps up with your ambition.</h3>
+        <p class="light-body">Multi gigabit internet, 5G failover, and AV-native spaces for hybrid teams.</p>
+      </div>
+      <div class="card-meta">
+        <span class="meta-name">Work Sans — crisp, no-nonsense</span>
+        <span class="meta-tag">Sans-Serif</span>
+      </div>
+    </div>
+
+    <!-- H: Lexend -->
+    <div class="card">
+      <div class="card-dark">
+        <div class="badge">H</div>
+        <p class="opt-label">Lexend</p>
+        <h2 class="dark-headline f-lexend">A Tech-Forward<br>Coworking Space</h2>
+        <p class="dark-sub">For Founders, Creatives, and Power Builders</p>
+      </div>
+      <div class="card-light">
+        <p class="light-eyebrow">Technology-First</p>
+        <h3 class="light-headline f-lexend">Infrastructure that keeps up with your ambition.</h3>
+        <p class="light-body">Multi gigabit internet, 5G failover, and AV-native spaces for hybrid teams.</p>
+      </div>
+      <div class="card-meta">
+        <span class="meta-name">Lexend — legible, modern</span>
+        <span class="meta-tag">Sans-Serif</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
