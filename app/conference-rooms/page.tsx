@@ -5,22 +5,22 @@ const BOOK_URL = 'https://conviviawork.coworksapp.com/book/716'
 
 const rooms = [
   {
-    name: 'Avid Learner',
+    name: 'Flexible Conference Room',
     description:
       'Ideal for workshops, pitch practice, and onboarding sessions. Dual 4K displays for hybrid working sessions. Flexible seating with movable desks allowing many setups for collaboration.',
   },
   {
-    name: 'Scrappy',
+    name: 'Executive Boardroom',
     description:
       'An executive boardroom for fast-moving teams. Features flexible seating, writable whiteboard wall, a 4K large format display that makes quick pivots and working sessions effortless.',
   },
   {
-    name: 'Seeks Context',
+    name: 'Small Meeting Room',
     description:
       'Designed for deep discovery calls and client briefings. This four person executive space creates a focused environment for sharing and decision making.',
   },
   {
-    name: 'Creative Problem Solver',
+    name: 'Stand Up Meeting Room',
     description:
       'Where teams are energized by working around a high top table set up with a 4K display and glass writing board for hybrid teams to join the fun.',
   },
