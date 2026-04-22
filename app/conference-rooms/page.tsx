@@ -39,7 +39,7 @@ export default function ConferenceRoomsPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#fe904d]">Conference Rooms</p>
           <h1 className="font-display text-6xl text-[#0c0c0c]">Spaces that honor how you collaborate.</h1>
           <p className="text-black/70">
-            Our conference rooms are named for the behaviors that help companies grow together. Each room is fully equipped with 4K large-format displays, studio-grade audio,
+            Each room is fully equipped with 4K large-format displays, studio-grade audio,
             and plug-and-play video conferencing so hybrid meetings feel natural.
             Book time using the links below and we'll prep whiteboards or analog tools to match your agenda.
           </p>
