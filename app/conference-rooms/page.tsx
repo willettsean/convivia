@@ -22,7 +22,7 @@ const rooms = [
   {
     name: 'Stand Up Meeting Room',
     description:
-      'Where teams are energized by working around a high top table set up with a 4K display and glass writing board for hybrid teams to join the fun.',
+      'Where teams are energized by working around a high top table with barstool seating set up with a 4K display and glass writing board for hybrid teams to join the fun.',
   },
 ]
 
