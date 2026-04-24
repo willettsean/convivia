@@ -6,6 +6,7 @@ import Script from 'next/script'
 const GA_ID             = 'G-FHHBM6SVZH'
 const META_PIXEL_ID     = '1649642579458577'
 const LINKEDIN_ID       = '9151116'
+const NEXTDOOR_ID       = '8da5aa42-d4da-4f64-aa5b-024e1f57e123'
 const CONSENT_KEY       = 'convivia_cookie_consent'
 
 export default function CookieManager() {
@@ -89,6 +90,18 @@ export default function CookieManager() {
             b.src="https://snap.licdn.com/li.lms-analytics/insight.min.js";
             s.parentNode.insertBefore(b,s)})(window.lintrk);
           `}</Script>
+
+          {/* Nextdoor Pixel */}
+          <Script id="nextdoor-pixel" strategy="afterInteractive">{`
+            !function(e,n){var t,p;e.ndp||((t=e.ndp=function(){
+            t.handleRequest?t.handleRequest.apply(t,arguments):t.queue.push(arguments)
+            }).queue=[],t.v=1,(p=n.createElement(e="script")).async=!0,
+            p.src="https://ads.nextdoor.com/public/pixel/ndp.js?id=${NEXTDOOR_ID}",
+            (n=n.getElementsByTagName(e)[0]).parentNode.insertBefore(p,n))
+            }(window,document);
+            ndp('init','${NEXTDOOR_ID}',{});
+            ndp('track','PAGE_VIEW');
+          `}</Script>
         </>
       )}
 
@@ -103,7 +116,7 @@ export default function CookieManager() {
             <div className="flex-1 space-y-1">
               <p className="text-sm font-semibold text-[#0c0c0c]">We use cookies</p>
               <p className="text-sm text-black/60 leading-relaxed">
-                Convivia Work uses analytics and marketing cookies (Google Analytics, Meta, LinkedIn) to understand
+                Convivia Work uses analytics and marketing cookies (Google Analytics, Meta, LinkedIn, Nextdoor) to understand
                 how visitors use our site and serve relevant ads. Under California law (CCPA) you may opt out of
                 marketing cookies at any time.{' '}
                 <a href="/privacy" className="font-semibold text-[#fe904d] hover:underline">

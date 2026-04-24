@@ -60,6 +60,10 @@ export default function PrivacyPage() {
                 <p className="font-semibold text-[#0c0c0c]">LinkedIn Insight Tag</p>
                 <p className="text-sm">Tracks conversions, enables retargeting, and provides analytics about professionals who interact with our LinkedIn ads. Data is processed by LinkedIn Corporation. <a href="https://www.linkedin.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#fe904d] hover:underline">LinkedIn Privacy Policy →</a></p>
               </div>
+              <div>
+                <p className="font-semibold text-[#0c0c0c]">Nextdoor Pixel</p>
+                <p className="text-sm">Measures ad performance and enables retargeting on the Nextdoor platform for local community advertising. Data is processed by Nextdoor, Inc. <a href="https://help.nextdoor.com/s/article/Privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#fe904d] hover:underline">Nextdoor Privacy Policy →</a></p>
+              </div>
             </div>
           </section>
 
